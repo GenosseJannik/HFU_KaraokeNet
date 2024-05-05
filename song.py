@@ -10,6 +10,7 @@ class Song:
         self.length = length
         self.instrumental_path = f"{music_directory}/{name}/no_vocals.mp3"
         self.vocal_path = f"{music_directory}/{name}/vocals.mp3"
+        self.song_path = f"{music_directory}/{name}/song.mp3"
         self.lyrics = lyrics
         self.animation = f"{animation_directory}/{name}.mp4"
 
