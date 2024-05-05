@@ -6,6 +6,7 @@ import wave
 import pygame
 import pyaudio
 import time
+from Vergleich import compare_mfcc
 
 # Pfad, in dem die Karaoke-Version des Benutzers gespeichert wird
 vocals_user_path = r"C:/Users/20edu/Softwareprojekt/pythonProject1/vocals_user.wav"
