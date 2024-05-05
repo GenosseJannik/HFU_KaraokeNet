@@ -104,9 +104,10 @@ def pause():
     paused = True
 
 
-def estimate_result():
+def estimate_result(song_name):
+    result = compare_mfcc(vocals_user_path, songs[song_name].song_path)  # Hier wird die Vergleichsfunktion aufgerufen
     return {recording_animation_video: gr.PlayableVideo.update(visible=False),
-            get_result_btn: gr.Button.update(visible=False), result_out: gr.Textbox.update(visible=True)}
+            get_result_btn: gr.Button.update(visible=False), result_out: gr.Textbox.update(value=result, visible=True)}
 
 
 with gr.Blocks() as demo:
@@ -131,8 +132,9 @@ with gr.Blocks() as demo:
     with gr.Column() as singing_layout:
         recording_animation_video = gr.PlayableVideo(visible=False, interactive=True)
         get_result_btn = gr.Button(value="Klicke mich um das Ergebnis auszuwerten", visible=False)
-        result_out = components.Textbox(label="Ergebnis", value="Glückwunsch! Du hast 2 Noten getroffen",
-                                        visible=False)
+    
+    with gr.Column() as result_layout:
+        result_out = components.Textbox(label="Ergebnis", visible=False)
 
     train_song_btn.click(fn=get_instrumental_get_lyrics, inputs=[song_chosen_inp], outputs=[instrumental_out,
                                                                                             lyrics_out, error_txt])
@@ -143,8 +145,8 @@ with gr.Blocks() as demo:
     recording_animation_video.play(fn=start, inputs=[song_chosen_inp], outputs=[])
     recording_animation_video.pause(fn=pause, inputs=[], outputs=[])
 
-    get_result_btn.click(fn=estimate_result, inputs=[], outputs=[recording_animation_video, get_result_btn,
-                                                                 result_out])
+    get_result_btn.click(fn=estimate_result, inputs=[song_chosen_inp], outputs=[recording_animation_video,
+                                                                                get_result_btn, result_out])
 
 if __name__ == "__main__":
     demo.launch()
