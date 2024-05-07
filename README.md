@@ -40,3 +40,39 @@ Fisnik/Naphy:
 -Mikro bei schellhammer erfragen
 Offen:
 -Gradio weitere einarbeitung (Keine Priorität)
+
+--------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 17.04.2024
+Jannik
+-Ubuntu als Server 
+-18gb RAM 
+
+Eduard:
+-
+Fisnik/Naphy: 
+-Weitere CNN einarbeitung
+-librosa
+-Gant Diagramm Arbeitspakete und Zeitdiagramme
+
+Julia:
+-Tonhöhe und vpm auslesen und vergleichen 
+
+--------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 03.05.2024
+Abwesend: Jannik (entschuldigt)
+
+Eduard:
+-(nachfragen)
+
+Jannik:
+-Server Pflegung
+
+Julia:
+-Problemlösung bezüglich der Bewertung mit Input von Frau Temerinac-Ott
+
+Fisnik Tahiraj/Naphy Sou
+-Ki generierte videos open sopurce software nutzebn
+-Ideen für präsentationsgestaltung
+-Mikrofon besorgen
+
+
