@@ -74,5 +74,53 @@ Fisnik Tahiraj/Naphy Sou
 -Ki generierte videos open sopurce software nutzebn
 -Ideen für präsentationsgestaltung
 -Mikrofon besorgen
+--------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 08.05.2024
+Abwesenheit: Fisnik, Naphy
+
+-Status Update und gespräch über den Tag der offenen Tür
+
+-Problematik der lizensen
+-Für den Tag der Informatik muss ein halbwegs laufender Prototyp stehen.
+---------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 15.05.2024
+Jannik:
+Server anfrage stop and wade verfahren für den Server
+Anfragen von einem Netz auf den Server und der dies verarbeitet.
+-Server weiter einarbeitung
+Julia:
+Hinbekommen das die Bewertung besser läuft
+-Vergleich mit Tonhöhe ist erfolgreich und funktioniert.
+
+
+Eduard:
+Die Textausgabe und Audioausgabe klappt auf der ‚Website‘ 
+-Bewettung trenne mit schlusssatz ja war gut/schklehct 
+
+Fisnik/Naphy: 
+ASTA anfragen bezüglich dem Raum füpr den Tag der Informatik 
+wir brauchen die zugangsberechtigung und beschallungsnalage muss von ASTA aufgebaut werden.
+brauchen es für den Tag der ofenen tür beamer beschallungsanlage Soundsystem
+unter der Aula
+alte Kafete  am Eingang erste Gruppe die was zeigt sind wir mit unserer Karaokesoftware
+oben in der Aula ist Hauptverantsoltung
+geht bis in C raum
+Bildschrime Beamer Beschallungsnlage 
+geht von 14-18 Uhr.
+------------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 29.05.2024
+Abwesenheit: Julia, Naphy
+
+-Bewertung per mehrdimensionalem Balkendiagramm
+
+Fisnik/Npahy: Präsentationsmaterial vorbereiten
+Videos mit Text erstellen
+-Sequenzdiagramm --> Zuerst Lied gesplittet, Modell eingelegt
+
+Julia/Eduard/Jannik:
+Finetuning des Codes (Eventuell die Implementierung der obigen Bewertungs
+------------------------------------------------------------------------------------------------------------------------------
+
+
 
 
