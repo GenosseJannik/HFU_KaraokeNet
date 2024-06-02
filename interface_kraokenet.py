@@ -1,17 +1,17 @@
 import gradio as gr
 from gradio import components
 from song import songs
-import threading
 import wave
-import pygame
 import pyaudio
-import time
 from mfcc_comparison import compare_mfcc
 from speech_comparison import compare_speech
+import pandas as pd
+from speech_comparison import transcribe
+from pitch_comparison_transposition import compare_avg_notes
 
 
 # Ordner, in dem die Karaoke-Version des Benutzers gespeichert wird
-vocals_user_dir = r"C:/Users/20edu/Softwareprojekt/pythonProject1/vocals_user/"
+vocals_user_dir = r"C:/Users/20edu/Softwareprojekt/pythonProject1/vocals_user/[Karaoke] "
 song_names = list(songs.keys())  # Liste, in der die Namen aller Lieder sind
 
 # Globale Variablen, die wichtig sind, wenn das Video abgebrochen wird (ungültige Karaoke-Version)
@@ -23,6 +23,7 @@ finished_recording = False
 def record_audio(length_in_seconds, output_file_name, frames_per_buffer=1024, format=pyaudio.paInt16, channels=1,
                  rate=44100):
     global paused
+    paused = False
     global finished_recording
     finished_recording = False
     global aborted_recording
@@ -49,7 +50,8 @@ def record_audio(length_in_seconds, output_file_name, frames_per_buffer=1024, fo
     p.terminate()
 
     if not aborted_recording:  # Aufnahme nur dann speichern, wenn die Karaoke-Version vollständig ist
-        obj = wave.open(vocals_user_dir + output_file_name, "wb")  # wb = write binary
+        output_file_path = vocals_user_dir + output_file_name + ".wav"
+        obj = wave.open(output_file_path, "wb")  # wb = write binary
         obj.setnchannels(channels)
         obj.setsampwidth(p.get_sample_size(format))
         obj.setframerate(rate)
@@ -58,50 +60,29 @@ def record_audio(length_in_seconds, output_file_name, frames_per_buffer=1024, fo
         finished_recording = True
 
 
-def play_audio(audio_file_path):
-    global paused
-    pygame.init()
-
-    pygame.mixer.music.load(audio_file_path)
-    pygame.mixer.music.play()
-
-    # pausiere die Instrumental-Version, wenn der Benutzer das Video pausiert
-    while pygame.mixer.music.get_busy() and not paused:
-        time.sleep(0.1)  # Pause, um die CPU-Belastung zu reduzieren
-
-    pygame.mixer.music.stop()
-
-
-def get_instrumental_get_lyrics(song_chosen):
+def train_song(song_chosen):
     if song_chosen is None:
-        return {error_txt: gr.Textbox.update(visible=True)}
-    instrumental_audio = gr.Audio().update(value=songs[song_chosen].instrumental_path, visible=True)
-    lyrics = components.Textbox().update(label=song_chosen, value=songs[song_chosen].lyrics, visible=True)
-    return {instrumental_out: instrumental_audio, lyrics_out: lyrics, error_txt: gr.Textbox.update(visible=False)}
+        return {error_txt: gr.Textbox(visible=True)}
+    song_audio = components.Audio(value=songs[song_chosen].song_path, visible=True)
+    instrumental_audio = gr.Audio(value=songs[song_chosen].instrumental_path, visible=True)
+    lyrics = components.Textbox(label=song_chosen, value=songs[song_chosen].lyrics, visible=True)
+    return {song_out: song_audio, instrumental_out: instrumental_audio, lyrics_out: lyrics,
+            error_txt: gr.Textbox(visible=False)}
 
 
 def change_layout(song_chosen):
     if song_chosen is None:
-        return {error_txt: gr.Textbox.update(visible=True)}
-    return {starting_layout: gr.Row.update(visible=False), testing_layout: gr.Column.update(visible=False),
-            recording_animation_video: gr.PlayableVideo.update(value=songs[song_chosen].animation, visible=True),
-            get_result_btn: gr.Button.update(visible=True), error_txt: gr.Textbox.update(visible=False)}
+        return {error_txt: gr.Textbox(visible=True)}
+    animation_video = components.Video(value=songs[song_chosen].animation_path, visible=True)
+    return {starting_layout: gr.Row.update(visible=False), testing_layout: gr.Column(visible=False),
+            recording_animation_video: animation_video,
+            get_result_btn: components.Button(visible=True), error_txt: components.Textbox(visible=False)}
 
 
 def start(song_chosen):
     global paused
-
     paused = False  # reset auf False
-    # Erstellen von Threads, damit gleichzeitig die Karaoke- aufgenommen und die Instrumental-Version abgespielt werden
-    record_thread = threading.Thread(target=record_audio, args=(songs[song_chosen].length, ("[Karaoke] " + song_chosen + ".wav")))
-    play_thread = threading.Thread(target=play_audio, args=(songs[song_chosen].instrumental_path,))
-
-    record_thread.start()
-    play_thread.start()
-
-    record_thread.join()  # warte in der Funktion bis die beiden Threads fertig sind
-    play_thread.join()
-
+    record_audio(songs[song_chosen].length, songs[song_chosen].name)
     return {}
 
 
@@ -113,16 +94,31 @@ def pause():
 def estimate_result(song_chosen):
     global finished_recording
     if not finished_recording:
-        return {error_txt: gr.Textbox.update(value="Du darfst nicht vorzeitig abbrechen.", visible=True)}
-    karaoke_vocals = vocals_user_dir + "[Karaoke] " + song_chosen + ".wav"
-    result_singing = compare_mfcc(karaoke_vocals, songs[song_chosen].song_path)  # Hier wird die Vergleichsfunktion aufgerufen
-    result_speech = compare_speech(songs[song_chosen], karaoke_vocals)
-
-    return {singing_layout: gr.Column.update(visible=False),
-            result_singing_out: gr.Textbox.update(value=result_singing, visible=True),
-            result_speech_out: gr.Textbox.update(value=result_speech, visible=True),
-            result_legend: gr.Textbox.update(visible=True),
-            error_txt: gr.Textbox.update(visible=False)
+        return {error_txt: gr.Textbox(value="Du darfst nicht vorzeitig abbrechen.", visible=True)}
+    karaoke_vocals = vocals_user_dir + song_chosen + ".wav"
+    result_singing = compare_mfcc(karaoke_vocals, songs[song_chosen].song_path)
+    recognized_lyrics = transcribe(karaoke_vocals)
+    result_speech = compare_speech(songs[song_chosen], recognized_lyrics)
+    result_bar_chart = pd.DataFrame(
+        {
+            "Kriterium": ["Gesang", "Aussprache"],
+            "Schulnote": [result_singing, result_speech],
+        })
+    result_singing = components.Textbox(value=result_singing, visible=True)
+    result_speech = components.Textbox(value=result_speech, visible=True)
+    bar_chart = components.BarPlot(value=result_bar_chart, x="Kriterium", y="Schulnote", x_title="Kriterium",
+                                   y_title="Schulnote", tooltip=["Kriterium", "Schulnote"], vertical=False,
+                                   visible=True)
+    result_recognized_lyrics = components.Textbox(value=recognized_lyrics, visible=True)
+    avg_semitones_difference, b, c, d = compare_avg_notes(karaoke_vocals, songs[song_chosen].song_path)
+    result_avg_semitones = components.Textbox(value=avg_semitones_difference, visible=True)
+    return {singing_layout: gr.Column(visible=False),
+            result_singing_out: result_singing,
+            result_speech_out: result_speech,
+            result_bar_chart_out: bar_chart,
+            result_recognized_lyrics_out: result_recognized_lyrics,
+            result_avg_semitones_out: result_avg_semitones,
+            error_txt: components.Textbox(visible=False)
             }
 
 
@@ -140,25 +136,24 @@ with gr.Blocks() as demo:
             ready_to_begin_btn = gr.Button("Klicke hier zum Starten")
 
     with gr.Column() as testing_layout:
-        with gr.Row():
-            instrumental_out = gr.Audio(label="Instrumentalversion", visible=False)
-        with gr.Row():
-            lyrics_out = components.Textbox(visible=False)
+        song_out = gr.Audio(label="Song", visible=False)
+        instrumental_out = gr.Audio(label="Instrumentalversion", visible=False)
+        lyrics_out = components.Textbox(visible=False)
 
     with gr.Column() as singing_layout:
-        recording_animation_video = gr.PlayableVideo(visible=False, interactive=True)
+        recording_animation_video = gr.PlayableVideo(visible=False, interactive=False)
         get_result_btn = gr.Button(value="Klicke mich um das Ergebnis auszuwerten", visible=False)
 
     with gr.Row() as result_layout:
         with gr.Column():
-            result_singing_out = components.Textbox(label="Ergebnis Gesang", visible=False)
-            result_speech_out = components.Textbox(label="Ergebnis Sprache", visible=False)
-        result_legend = components.Textbox(label="Legende", value="Die Bewertung erfolgt auf einer Skala von Noten, "
-                                                                  "wobei 1 die Beste und 4 die schlechteste Note ist.",
-                                           visible=False)
+            result_singing_out = components.Textbox(label="Gesang", visible=False)
+            result_speech_out = components.Textbox(label="Aussprache", visible=False)
+        result_bar_chart_out = components.BarPlot(label="Bewertung", visible=False)
+    result_recognized_lyrics_out = components.Textbox(label="KI-generierte Lyrics deiner Aufnahme", visible=False)
+    result_avg_semitones_out = components.Textbox(label="Durchschnittler Unterschied in Seminoten", visible=False)
 
-    train_song_btn.click(fn=get_instrumental_get_lyrics, inputs=[song_chosen_inp], outputs=[instrumental_out,
-                                                                                            lyrics_out, error_txt])
+    train_song_btn.click(fn=train_song, inputs=[song_chosen_inp], outputs=[song_out, instrumental_out, lyrics_out,
+                                                                           error_txt])
     ready_to_begin_btn.click(fn=change_layout, inputs=[song_chosen_inp], outputs=[starting_layout, testing_layout,
                                                                                   recording_animation_video,
                                                                                   get_result_btn, error_txt])
@@ -168,7 +163,9 @@ with gr.Blocks() as demo:
 
     get_result_btn.click(fn=estimate_result, inputs=[song_chosen_inp], outputs=[singing_layout,
                                                                                 result_singing_out,
-                                                                                result_speech_out, result_legend,
+                                                                                result_speech_out, result_bar_chart_out,
+                                                                                result_recognized_lyrics_out,
+                                                                                result_avg_semitones_out,
                                                                                 error_txt])
 
 if __name__ == "__main__":
