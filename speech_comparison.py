@@ -5,21 +5,19 @@ import librosa
 transcriber = pipeline("automatic-speech-recognition", model="openai/whisper-base.en")  # base model laden
 
 
-def compare_speech(song, karaoke_audio_path):
+def compare_speech(song, user_lyrics):
     cleaned_original_lyrics = format_lyrics(song.lyrics)
 
-    recognized_lyrics = transcribe(karaoke_audio_path)  # KI erkannte Lyrics aus den User-Vocals erstellen
-    cleaned_recognized_lyrics = format_lyrics(recognized_lyrics)
+    cleaned_user_lyrics = format_lyrics(user_lyrics)
 
     cleaned_original_lyrics_words = cleaned_original_lyrics.split()
-    cleaned_recognized_lyrics_words = cleaned_recognized_lyrics.split()
-
-    word_distance = levenshtein_distance(cleaned_original_lyrics_words, cleaned_recognized_lyrics_words)
+    cleaned_user_lyrics_words = cleaned_user_lyrics.split()
+    word_distance = levenshtein_distance(cleaned_original_lyrics_words, cleaned_user_lyrics_words)
     word_count_original = len(cleaned_original_lyrics_words)  # Anzahl an Wörtern
     # erlaubt, dass 10 % mehr Wörter falsch erkannt werden dürfen als beim Original
     if word_distance < song.word_distance + word_count_original * 0.1:
         return 1  # Schulnote 1
-    elif word_distance < 9 + word_count_original * 0.2:
+    elif word_distance < song.word_distance + word_count_original * 0.2:
         return 2
     else:
         return 3
