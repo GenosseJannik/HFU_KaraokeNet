@@ -6,7 +6,7 @@ import wave
 import pygame
 import pyaudio
 import time
-from Vergleich import compare_mfcc
+from mfcc_comparison import compare_mfcc
 from speech_comparison import compare_speech
 
 
