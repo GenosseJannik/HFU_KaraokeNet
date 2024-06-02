@@ -3,7 +3,7 @@ import demucs.separate
 import os
 from mutagen.mp3 import MP3
 
-
+# songs_dir besteht aus den 4 Unterverzeichnissen Songs, Animations, Lyrics und Word Distances
 songs_dir = r"C:/Users/20edu/Softwareprojekt/pythonProject1/Songs"
 seperated_songs_dir = r"C:/Users/20edu/Softwareprojekt/pythonProject1/separated/mdx_q"
 
