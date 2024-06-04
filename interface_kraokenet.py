@@ -8,6 +8,10 @@ from speech_comparison import compare_speech
 import pandas as pd
 from speech_comparison import transcribe
 from pitch_comparison_transposition import compare_avg_notes
+import Sender
+import compareClass
+
+
 
 
 # Ordner, in dem die Karaoke-Version des Benutzers gespeichert wird
@@ -96,6 +100,13 @@ def estimate_result(song_chosen):
     if not finished_recording:
         return {error_txt: gr.Textbox(value="Du darfst nicht vorzeitig abbrechen.", visible=True)}
     karaoke_vocals = vocals_user_dir + song_chosen + ".wav"
+    #save wav file as object to transfer to server
+    #karaoke_wav = wave.open(karaoke_vocals)
+    #song_wav = wave.open(songs[song_chosen].song_path)
+    #comparisonObject = compareClass.compareClass(karaoke_wav, song_wav)
+    #Sender.send(comparisonObject)
+    #karaoke_wav.close()
+    #song_wav.close()
     result_singing = compare_mfcc(karaoke_vocals, songs[song_chosen].song_path)
     recognized_lyrics = transcribe(karaoke_vocals)
     result_speech = compare_speech(songs[song_chosen], recognized_lyrics)

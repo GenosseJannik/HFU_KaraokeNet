@@ -1,6 +1,8 @@
 import socket
 import pickle
 import wave
+import speech_comparison.py
+import mfcc_comparison.py
 
 def main():
     try:
