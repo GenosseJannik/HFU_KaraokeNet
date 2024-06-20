@@ -1,0 +1,11 @@
+Abwesenheit: Julia, Naphy
+
+-Bewertung per mehrdimensionalem Balkendiagramm
+
+Fisnik/Naphy: 
+Präsentationsmaterial vorbereiten 
+Videos mit Text erstellen 
+-Sequenzdiagramm --> Zuerst Lied gesplittet, Modell eingelegt 
+
+
+Julia/Eduard/Jannik: Finetuning des Codes ( Eventuell die Implementierung der obigen Bewertungsoption
