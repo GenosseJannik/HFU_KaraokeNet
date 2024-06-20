@@ -1,0 +1,15 @@
+Abwesend: Jannik, Julia
+
+Fisnik / Naphy 
+-Gema nochmal kontakieren 
+-Notfall etwas bekantere Lieder 
+-Schellhammer wegen raum für unser Projekt befragen 
+-Github repo 
+-Anleitung innerhalb der Repo 
+-Dokumentation anpassen
+
+Eduard/Julia/Jannik: 
+-Bewertung anpassen 
+-Librosa 
+-Fließenden Balken schlecht- mittel -gut -super gut 
+-fließender verlauf in der Benutzeroberfläche
