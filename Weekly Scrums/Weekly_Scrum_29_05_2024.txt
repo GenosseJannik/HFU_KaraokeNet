@@ -8,4 +8,5 @@ Videos mit Text erstellen
 -Sequenzdiagramm --> Zuerst Lied gesplittet, Modell eingelegt 
 
 
-Julia/Eduard/Jannik: Finetuning des Codes ( Eventuell die Implementierung der obigen Bewertungsoption
+Julia/Eduard/Jannik: 
+Finetuning des Codes (Eventuell die Implementierung der obigen Bewertungsoption)
