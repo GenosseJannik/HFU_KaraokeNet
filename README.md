@@ -1,142 +1,34 @@
 # HFU_KaraokeNet
 Repository for semesterproject about a tool that will help you improve your skills at karaoke
 
-Präsentation des Projektes am Tag der Informatik: 5.7.2024
 
-03.04.2024 3te Treffen Weeekly Scrum
+# Willkommen zu unserer Karaokesoftware!
+Herzlich willkommen zu unserer revolutionären Karaokesoftware! Hier erleben Sie Karaoke wie nie zuvor, unterstützt durch modernste Technologien und benutzerfreundliche Schnittstellen. Wir haben eine leistungsstarke Kombination von Tools integriert, um Ihnen ein unvergessliches Karaoke-Erlebnis zu bieten.
 
-Fisnik/Naphy: 
---> Mail an Herr Döbereiner für Kontaktdaten von Herrn Goßmann. 👎
---> Bewertungsmöglichkeiten recherchieren 👍
---> eventuell Neuronale Netze recherchieren 🛑
+## Unsere Technologien
+Gradio – Benutzerfreundliches Interface
+Unsere Software verwendet Gradio für die Benutzeroberfläche. Gradio ist ein intuitives Framework, das es uns ermöglicht, interaktive Webanwendungen zu erstellen. Mit Gradio können Sie ganz einfach durch unsere Liederauswahl navigieren, Anpassungen vornehmen und das Karaoke-Erlebnis starten – alles in einer übersichtlichen und benutzerfreundlichen Umgebung.
 
-Eduard: 
---> musikdatei einlesen und mit Python trennen 🛑
---> Eventuell erste Infos bezüglich auto der Hochschule gestellt bekommen 🛑
+### Demucs – Musikalische Trennung
+Wir setzen Demucs, ein fortschrittliches neuronales Netz, ein, um Songs in ihre Bestandteile zu zerlegen. Demucs trennt das Lied in Instrumental- und Karaoke-Versionen, sodass Sie nur die Instrumentalmusik hören, während der Text angezeigt wird. Dies ermöglicht Ihnen ein authentisches Karaoke-Erlebnis mit hoher Klangqualität.
 
-julia:
---> weitere Gradio einarbeitung 🛑
+### WhisperAI – Spracherkennung
+Für die Erkennung und Verarbeitung Ihrer Stimme während des Singens nutzen wir WhisperAI. Diese leistungsstarke Spracherkennungssoftware sorgt dafür, dass Ihre gesungenen Worte präzise und in Echtzeit erkannt werden. Dies ist besonders nützlich für die Bewertung und Rückmeldung Ihrer Leistung.
 
-Jannik:
--->Server aufsetzen für die Webapp. Dies mit Martin Kramer nochmal absprechen bzw. diesen fragen.
+### Librosa – Bewertung der Gesangsleistung
+Um Ihre gesangliche Leistung zu bewerten, verwenden wir Librosa, eine leistungsstarke Bibliothek für die Audioanalyse. Librosa analysiert die Tonhöhe, das Timing und andere Aspekte Ihres Gesangs, um Ihnen ein detailliertes Feedback zu geben. So können Sie Ihre Fähigkeiten verbessern und Ihre Karaoke-Performance optimieren.
 
---------------------------------------------------------------------------------------------------------------------------
-10.04.2024 Weekly Scrum 
-Anwesend: julia,Fisnik,Eduard,Jannik 
-Abwesend: Naphy (Krank)
-Jannik: 
-Kramer kann VM für Server bereitstellen
-- mindestens 12 GB benötigt
-- Erkundung bei kramer bezüglich den kosten ( Für Semesterprojekte eigentlich kostenlos
-- Mp3 der fileform 
-Julia:
--Librosa einarbeitung (Audiospuren verarbeitung)
-Eduard:
--Optimierung des Zeitaufwands für die Stimmtrennung
-Fisnik/Naphy:
--Convolutionel Network. Für neuronale Netze mal reinschauen youtube etc.
-- Lieder 
-- Nefex
--Mikro bei schellhammer erfragen
-Offen:
--Gradio weitere einarbeitung (Keine Priorität)
-
---------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 17.04.2024
-Jannik
--Ubuntu als Server 
--18gb RAM 
-
-Eduard:
-
-Fisnik/Naphy: 
--Weitere CNN einarbeitung
-
-Julia:
--Tonhöhe und vpm auslesen und vergleichen 
-
---------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 03.05.2024
-Abwesend: Jannik (entschuldigt)
-
-Eduard:
--(nachfragen)
-
-Jannik:
--Server Pflegung
-
-Julia: 
--Problemlösung bezüglich Bewertung mit Input von Frau Temerinac-Ott
-
-Fisnik /Naphy:
--Ki generierte Videos open source software
--Ideen für Präsentationsgestaltung
--Mikrofon besorgen
-
---------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 08.05.2024
-Abwesenheit: Fisnik, Naphy
-
--Status Update und gespräch über den Tag der offenen Tür
--Problematik der Lizensen
--Für den Tag der Informatik muss ein halbwegs laufender Prototyp stehen
+## Anleitung
+### So funktioniert es
+1. Lied auswählen: Starten Sie die Software und wählen Sie Ihr Lieblingslied aus der Liste.
+2. Ausprobieren: Bevor sie mit dem richtigen Versuch loslegen, besteht für sie die Möglichkeit das Lied welches sie singen möchten, vorher auszuprobieren. Hier können sie sich den Text zusammen mit dem Lied einprägen
+3. Starten: Klicken Sie auf "Starten", um das Video mit der Instrumentalversion und dem Text zu starten.
+4. Singen: Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos von anfang an automatisch aufgenommen und dann von WhisperAI erkannt und von Librosa analysiert.
+5. Bewertung: Sie erhalten sobald sie auf 'Klicken sie mich um das Ergebnis zu erhalten' ihr Ergebnis des gesungenen Liedes. In einem Balkendiagramm in einer Art Notensystem wird ihre Stimme im Vergleich zum Original bewertet.
+Sie erhalten ebenfalls eine Information inwiefern die Software ihre Stimme transpondieren musste, um ein akkurateres Ergebnis zu erhalten.
 
 
----------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 15.05.2024
-Jannik:
-Server anfrage stop and wade verfahren für den Server
-Anfragen von einem Netz auf den Server und der dies verarbeitet.
--Server weiter einarbeitung
-Julia:
-Hinbekommen das die Bewertung besser läuft
--Vergleich mit Tonhöhe ist erfolgreich und funktioniert.
-
-
-Eduard:
-Die Textausgabe und Audioausgabe klappt auf der ‚Website‘ 
--Bewettung trenne mit schlusssatz ja war gut/schklehct 
-
-Fisnik/Naphy: 
-Aasta anfragen bezüglich dem Raum für Tag der Informatik
-wir brauchen zugangsberechtigung und beschallungsanlage für Tag der Informatik
-beschallungsanlage und Soundsystem muss aufgebaut sein
-Ort ist die alte Cafete
-Wir sind die erste Gruppe die etwas zeigt
-Bildschirm Beamer Beschallungsanlage
-
-
-------------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 29.05.2024
-Abwesenheit: Julia, Naphy
-
--Bewertung per mehrdimensionalem Balkendiagramm
-
-Fisnik/Npahy: Präsentationsmaterial vorbereiten
-Videos mit Text erstellen
--Sequenzdiagramm --> Zuerst Lied gesplittet, Modell eingelegt
-Julia/Eduard/Jannik:
-Finetuning des Codes ( Eventuell die Implementierung der obigen Bewertungsoption
-
-------------------------------------------------------------------------------------------------------------------------------
-Weekly Scrum 14.06.2024
-Abwesend: Jannik, Julia
-
-Fisnik / Naphy
--Gema nochmal kontakieren
--Notfall etwas bekantere Lieder
--Schellhammer wegen raum für unser Projekt befragen
--Github repo
--Anleitung innerhalb der Repo
--Dokumentation anpassen
-
-Eduard/Julia/Jannik: 
--Bewertung anpassen
--Librosa 
--Fließenden Balken schlecht- mittel -gut -super gut
--fließender verlauf in den Benutzeroberfläche
-
-
+Wir wünschen Ihnen viel Spaß und Erfolg mit unserer Karaokesoftware!. Lassen Sie uns gemeinsam die Freude am Singen erleben!
 
 
 
