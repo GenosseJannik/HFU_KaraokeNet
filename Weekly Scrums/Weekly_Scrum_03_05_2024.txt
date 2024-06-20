@@ -1,9 +1,15 @@
 Abwesend: Jannik (entschuldigt)
 
-Eduard: -(nachfragen)
+Eduard: 
+-(nachfragen)
 
-Jannik: -Server Pflegung
+Jannik: 
+-Server Pflegung
 
-Julia: -Problemlösung bezüglich Bewertung mit Input von Frau Temerinac-Ott
+Julia: 
+-Problemlösung bezüglich Bewertung mit Input von Frau Temerinac-Ott
 
-Fisnik /Naphy: -Ki generierte Videos open source software -Ideen für Präsentationsgestaltung -Mikrofon besorgen
+Fisnik /Naphy: 
+-Ki generierte Videos open source software 
+-Ideen für Präsentationsgestaltung 
+-Mikrofon besorgen
