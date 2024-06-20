@@ -1,12 +1,22 @@
-mindestens 12 GB benötigt
-Erkundung bei kramer bezüglich den kosten ( Für Semesterprojekte eigentlich kostenlos
-Mp3 der fileform Julia: -Librosa einarbeitung (Audiospuren verarbeitung) Eduard: -Optimierung des Zeitaufwands für die Stimmtrennung Fisnik/Naphy: -Convolutionel Network. Für neuronale Netze mal reinschauen youtube etc.
+Scrum Anwesend: julia,Fisnik,Eduard,Jannik 
+Abwesend: Naphy (Krank) 
+
+Jannik: 
+-Kramer kann VM für Server bereitstellen
+-mindestens 12 GB benötigt
+-Erkundung bei kramer bezüglich den kosten ( Für Semesterprojekte eigentlich kostenlos
+Mp3 der fileform 
+
+Julia: 
+-Librosa einarbeitung (Audiospuren verarbeitung) 
+
+Eduard: 
+-Optimierung des Zeitaufwands für die Stimmtrennung 
+
+Fisnik/Naphy: 
+-Convolutionel Network. Für neuronale Netze mal reinschauen youtube etc.
 Lieder
-Nefex -Mikro bei schellhammer erfragen Offen: -Gradio weitere einarbeitung (Keine Priorität)
-Weekly Scrum 17.04.2024 Jannik -Ubuntu als Server -18gb RAM
+Nefex 
+-Mikro bei schellhammer erfragen 
 
-Eduard:
-
-Fisnik/Naphy: -Weitere CNN einarbeitung
-
-Julia: -Tonhöhe und vpm auslesen und vergleichen
+Offen: -Gradio weitere einarbeitung (Keine Priorität)
