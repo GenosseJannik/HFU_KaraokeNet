@@ -1,0 +1,12 @@
+Jannik: 
+-Ubuntu als Server 
+-18gb RAM
+
+
+Eduard:
+
+Fisnik/Naphy: 
+-Weitere CNN einarbeitung
+
+Julia: 
+-Tonhöhe und vpm auslesen und vergleichen
