@@ -115,10 +115,27 @@ Abwesenheit: Julia, Naphy
 Fisnik/Npahy: Präsentationsmaterial vorbereiten
 Videos mit Text erstellen
 -Sequenzdiagramm --> Zuerst Lied gesplittet, Modell eingelegt
-
 Julia/Eduard/Jannik:
-Finetuning des Codes (Eventuell die Implementierung der obigen Bewertungsoption
+Finetuning des Codes ( Eventuell die Implementierung der obigen Bewertungsoption
+
 ------------------------------------------------------------------------------------------------------------------------------
+Weekly Scrum 14.06.2024
+Abwesend: Jannik, Julia
+
+Fisnik / Naphy
+-Gema nochmal kontakieren
+-Notfall etwas bekantere Lieder
+-Schellhammer wegen raum für unser Projekt befragen
+-Github repo
+-Anleitung innerhalb der Repo
+-Dokumentation anpassen
+
+Eduard/Julia/Jannik: 
+-Bewertung anpassen
+-Librosa 
+-Fließenden Balken schlecht- mittel -gut -super gut
+-fließender verlauf in den Benutzeroberfläche
+
 
 
 
