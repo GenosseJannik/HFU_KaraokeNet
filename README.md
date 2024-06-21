@@ -30,6 +30,5 @@ Sie erhalten ebenfalls eine Information inwiefern die Software ihre Stimme trans
 
 Wir wünschen Ihnen viel Spaß und Erfolg mit unserer Karaokesoftware!. Lassen Sie uns gemeinsam die Freude am Singen erleben!
 
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/d6e04c94-10cb-4cd7-aa03-5a02bf879a12)
 
 
