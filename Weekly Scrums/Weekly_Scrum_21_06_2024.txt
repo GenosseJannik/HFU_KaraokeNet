@@ -1,0 +1,13 @@
+Eduard:
+-Interface
+
+Julia:
+-BPM hat nicht ganz funktioniert
+-zwei Audiospuren vergleichen und schauen, ob das Timing passt.
+
+Fisnik/Naphy: 
+-Python Skripte beschrieben in der READ ME
+-Screenshots zu der Anleitung hinzufügen
+-Abstract schreiben
+
+Mfc sind nicht gut für bewertungsverfahren
