@@ -30,13 +30,12 @@ Für die Erkennung ihrer Aussprache während des Singens nutzen wir WhisperAI. D
 ![Vorlesung04_KI_und_Musik_KW44_WiSe2023](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/0d8804d8-b919-41ae-8e89-391ded1a9a53)
   
 3. Starten: Klicken Sie auf "Starten", um das Video mit der Instrumentalversion und dem Text zu starten.
-   
-![starten](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/6d4b48b5-0deb-40cb-a51a-36e6a0cd4599)
 
+![starten](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/88941996-e89a-4d63-a297-4c87c341f3a3)
    
-4. Singen: Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur letzten Sekunde das Video abspielen lassen. Andernfalls erhalten sie keine Bewertung zu ihrer gesungenen Karaoke-Version, sondern nur eine Fehlermeldung.
+5. Singen: Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur letzten Sekunde das Video abspielen lassen. Andernfalls erhalten sie keine Bewertung zu ihrer gesungenen Karaoke-Version, sondern nur eine Fehlermeldung.
 
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/06793612-f877-460b-97fa-bc67948bb727)
+![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/c4eacde5-244b-446b-8546-aa7dc7f6b0db)
 
 6. Bewertung: Sie erhalten sobald sie auf 'Klicken sie mich um das Ergebnis zu erhalten' ihr Ergebnis des gesungenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original bewertet.
 Sie erhalten ebenfalls eine Information, inwiefern die Software ihre Stimme transpondieren musste, um ein akkurateres Ergebnis zu erhalten.
