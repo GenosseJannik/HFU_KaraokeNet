@@ -6,27 +6,25 @@ transcriber = pipeline("automatic-speech-recognition", model="openai/whisper-bas
 
 
 def compare_speech(song, user_lyrics):
-    cleaned_original_lyrics = format_lyrics(song.lyrics)
+    cleaned_original_lyrics_words = format_lyrics(song.lyrics)
+    cleaned_user_lyrics_words = format_lyrics(user_lyrics)
 
-    cleaned_user_lyrics = format_lyrics(user_lyrics)
-
-    cleaned_original_lyrics_words = cleaned_original_lyrics.split()
-    cleaned_user_lyrics_words = cleaned_user_lyrics.split()
     word_distance = levenshtein_distance(cleaned_original_lyrics_words, cleaned_user_lyrics_words)
-    word_count_original = len(cleaned_original_lyrics_words)  # Anzahl an Wörtern
-    # erlaubt, dass 10 % mehr Wörter falsch erkannt werden dürfen als beim Original
-    if word_distance < song.word_distance + word_count_original * 0.1:
-        return 1  # Schulnote 1
-    elif word_distance < song.word_distance + word_count_original * 0.2:
-        return 2
-    else:
-        return 3
+    word_distance_original = song.word_distance
+    word_length_original = len(cleaned_original_lyrics_words)  # Anzahl an Wörtern im Lied
+
+    # Lineare Interpolation, die die Anzahl falsch erkannter Wörter einer Prozentzahl zuordnet
+    # z.B. gibt es 100 %, wenn word_distance - word_distance_original = 0 ist, also wenn vom Benutzer höchstens so viele
+    # Wörter falsch erkannt wurden wie beim Original
+    accuracy_percentage = 100 * max(0, 1 - (word_distance - word_distance_original) / (word_length_original - word_distance_original))
+
+    return accuracy_percentage
 
 
 def format_lyrics(lyrics):
     new_lyrics = lyrics.lower()
     new_lyrics = ' '.join(new_lyrics.replace(',', '').replace('.', '').split())
-    return new_lyrics
+    return new_lyrics.split()
 
 
 def transcribe(audio_path):
@@ -55,4 +53,3 @@ def levenshtein_distance(words_1, words_2):  # erwartet 2 Listen, in denen die W
                                matrix[i - 1][j - 1] + cost  # Ersetzung
                                )
     return int(matrix[len(words_1)][len(words_2)])  # der letzte Eintrag in der Matrix = Anzahl der verschiedenen Wörter
-
