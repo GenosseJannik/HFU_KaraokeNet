@@ -25,7 +25,7 @@ Für die Erkennung ihrer Aussprache während des Singens nutzen wir WhisperAI. D
 
 ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/ada17e06-8cfd-4115-832d-0ed615805e01)
 
-2. Ausprobieren: Bevor sie mit dem richtigen Versuch loslegen, besteht für sie die Möglichkeit das Lied welches sie singen möchten, vorher auszuprobieren. Hier können sie sich den Text zusammen mit der Rhytmik des Liedes einprägen.
+2. Ausprobieren: Bevor sie mit dem richtigen Versuch loslegen, besteht für sie die Möglichkeit das Lied welches sie singen möchten, vorher zu proben. Hier können sie sich den Text des Liedes sowie die Rhytmik und Melodien des Gesangs einprägen.
    
 ![Vorlesung04_KI_und_Musik_KW44_WiSe2023](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/0d8804d8-b919-41ae-8e89-391ded1a9a53)
   
