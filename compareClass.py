@@ -1,5 +1,6 @@
 import wave
 
+#Class to send all needed information for evaluation in one Session
 
 class compareClass:
     karaoke_wav: wave.Wave_read
