@@ -49,8 +49,12 @@ Diese erhal
 
 4. **KaraokeNet starten**
 
-   Alles bis hierhin erledigt? Gut, dann müssen Sie nur noch das Skript interface_karaokenet.py ausführen. Dies können sie entweder in ihrer Entwicklungsumgebung machen, oder aber in einem
-   Terminal, in welchem Sie sich erst zu dem Github Repository navigieren müssen. Im Anschluss können Sie mit dem Befehl *python interface_karaokenet.py* das Interface starten.
-   Wie sie das Interface zu benutzen haben, erfahren sie hier.
+   Alles bis hierhin erledigt? Gut, dann müssen Sie nur noch das Skript interface_karaokenet.py ausführen. Dies können sie entweder in ihrer Entwicklungsumgebung machen, wenn sie das gesamte
+   Repository in einem Projekt gespeichert haben, oder aber in einem Terminal, in welchem Sie sich erst zu dem Github Repository navigieren müssen. Im Anschluss können sie das Interface mit
+   diesem Befehl starten:
+   
+   python interface_karaokenet.py
+   
+   Wie Sie das Interface anwenden können erfahren sie [hier](./README.md).
    
 
