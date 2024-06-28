@@ -29,14 +29,22 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    
 4. **Neue Lieder hinzufügen (Optional)**:
 
-   Die bestehende Software kann um weitere Lieder erweitert werden, indem Sie in dem Verzeichniss Songs die entsprechenden Dateien hinzufügen.
-   Dazu gehört in dem Unterverzeichnis [Songs/Songs](./Songs/Songs) die .mp3-Datei des Liedes, die zwingend erforderlich ist.
-   ZUr Bewertung der Aussprache ist es wichtig, dass Sie in dem Ordner [Songs/Lyrics](./Songs/Lyrics) die Songtexte als .txt-Datei abspeichern.
-   In [Songs/Video](./Songs/Video) sind die Videos, die die Texte des Liedes visualisieren, als .mp4-Datei abzulegen.
-   Die Dateien in dem Ordner [Songs/Word Distances](./Songs/Word Distances) beinhalten die Anzahl an Wörter, die bei der Original-Version eines Liedes von WhisperAI falsch worden sind. Diese
-   werden dementsprechend automatisch im [Programm](./Songs.py) erstellt, weshalb sie hier keine eigene Datei anfertigen sollen.
-   Bei allen Dateien, die zu einem Lied gehören, ist es wichtig, dass Sie diesen den selben Namen geben, da nur so das Programm den Liedern ihre Texte und Videos zuordnen kann.
+   Die bestehende Software kann um weitere Lieder erweitert werden, indem Sie in dem Verzeichnis Songs die entsprechenden Dateien hinzufügen.
+   Zu den Dateien, die sie hinzufügen müssen gehören:
+
    
+   [Songs/Songs](./Songs/Songs): Hier legen Sie die .mp3-Datei des Liedes ab.
+   
+   [Songs/Lyrics](./Songs/Lyrics): Damit die Bewertung der Aussprache funktioniert, speichern Sie hier die Songtexte als .txt-Datei ab.
+
+   [Songs/Video](./Songs/Video): An diesem Ort sind die Videos, die die Texte der Lieder visualisieren, als .mp4-Datei abzulegen.
+
+   Bei allen zu einem Lied gehörenden Dateien, ist es wichtig, dass Sie diesen den selben Namen geben, da nur so das Programm den Liedern ihre Texte und Videos zuordnen kann.
+
+   Die Dateien in dem Ordner [Songs/Word Distances](./Songs/Word_Distances) beinhalten die Anzahl an Wörter, die bei der Original-Version eines Liedes von WhisperAI falsch erkannt worden
+   sind. Diese Dateien werden dementsprechend von der Software selbst erstellt, weshalb sie hier *keine* eigene Datei anfertigen sollen. 
+
+
 
 5. **KaraokeNet starten**
 
@@ -46,6 +54,6 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    ```sh
    python interface_karaokenet.py
    ```
-   Wie Sie nun das Interface anwenden können erfahren sie [hier](./README.md).
+   Wie Sie sich nun auf der Website unserer KaraokeNet Software zurechtfinden können erfahren sie [hier](./README.md).
    
 
