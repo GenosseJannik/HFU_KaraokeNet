@@ -86,8 +86,8 @@ def record_audio(length_in_seconds, output_file_name, frames_per_buffer=1024, fo
 def train_song(song_chosen):
     if song_chosen is None:
         return {error_txt: components.Textbox(visible=True)}
-    song_audio = components.Audio(value=songs[song_chosen].song_path, visible=True)
-    instrumental_audio = components.Audio(value=songs[song_chosen].instrumental_path, visible=True)
+    song_audio = gr.Audio(value=songs[song_chosen].song_path, visible=True)
+    instrumental_audio = gr.Audio(value=songs[song_chosen].instrumental_path, visible=True)
     lyrics = components.Textbox(label=song_chosen, value=songs[song_chosen].lyrics, visible=True)
     return {testing_layout: gr.Column(visible=True), song_out: song_audio, instrumental_out: instrumental_audio,
             lyrics_out: lyrics, error_txt: gr.Textbox(visible=False)}
@@ -119,9 +119,9 @@ def rgb_to_hex(rgb):
     return '#%02x%02x%02x' % rgb
 
 
-def plot_results(result_singing, result_speech):
-    labels = ["Gesang", "Aussprache"]
-    values = [result_singing, result_speech]
+def plot_results(result_dict):
+    labels = list(result_dict.keys())
+    values = list(result_dict.values())
 
     fig, ax = plt.subplots(figsize=(13, 3), dpi=300)
 
@@ -145,8 +145,8 @@ def plot_results(result_singing, result_speech):
 def estimate_result(song_chosen):
     global finished_recording
     if not finished_recording:
-        return {error_txt: components.Textbox(value="Du darfst nicht vorzeitig abbrechen.", visible=True)}
-    karaoke_vocals = vocals_user_dir + song_chosen + ".wav"
+        return {error_txt2: components.Textbox(visible=True)}
+    user_vocals = vocals_user_dir + song_chosen + ".wav"
     # save wav file as object to transfer to server
     # karaoke_wav = wave.open(karaoke_vocals)
     # song_wav = wave.open(songs[song_chosen].song_path)
@@ -154,22 +154,32 @@ def estimate_result(song_chosen):
     # Sender.send(comparisonObject)
     # karaoke_wav.close()
     # song_wav.close()
-    result_singing_percentage = compare_mfcc(karaoke_vocals, songs[song_chosen].song_path)
-    recognized_lyrics = transcribe(karaoke_vocals)
+    # Compare the current notes between the two audio files
+    overall_semitone_difference, semitone_differences, notes_original, notes_cover = compare_current_notes(
+        songs[song_chosen].vocal_path, user_vocals)
+
+    # Automatically determine transposition
+    transposition = auto_transpose_avg_notes(notes_original, notes_cover)
+
+    # Transpose the cover notes
+    transposed_cover_notes = transpose_notes(notes_cover, -transposition)
+
+    # Calculate the average differences in semitones for the transposed cover notes
+    overall_transposed_semitone_difference, transposed_semitone_differences = calculate_diff(notes_original,
+                                                                                             transposed_cover_notes)
+
+    # Calculate the percentage score based on the transposed average difference in semitones
+    result_singing_percentage = calculate_grade(overall_semitone_difference)
+
+    recognized_lyrics = transcribe(user_vocals)
     result_speech_percentage = compare_speech(songs[song_chosen], recognized_lyrics)
-    fig = plot_results(result_singing_percentage, result_speech_percentage)
+    result_rhythm_percentage = 70
+    result_dict = {"Aussprache": result_speech_percentage, "Rhythmik": result_rhythm_percentage,
+                   "Gesang": result_singing_percentage}
+    fig = plot_results(result_dict)
 
     result_recognized_lyrics = components.Textbox(value=recognized_lyrics, visible=True)
-    # Compare the average notes between the two audio files
-    overall_semitone_difference, semitone_differences, avg_notes_original, avg_notes_cover = compare_avg_notes(
-        karaoke_vocals, songs[song_chosen].vocal_path)
-    # Automatically determine transposition
-    transposition = auto_transpose_avg_notes(avg_notes_original, avg_notes_cover)
-    # Transpose the cover notes
-    transposed_cover_notes = transpose_notes(avg_notes_cover, -transposition)
-    # Calculate the average differences in semitones for the transposed cover notes
-    overall_transposed_semitone_difference, transposed_semitone_differences = calculate_diff(avg_notes_original,
-                                                                                             transposed_cover_notes)
+
     if transposition == 1:
         result_transposition = components.Textbox(
             value=f"Das Lied wurde um {transposition} Halbtonschritt transponiert.\n"
@@ -186,7 +196,7 @@ def estimate_result(song_chosen):
             result_recognized_lyrics_out: result_recognized_lyrics,
             result_avg_semitones_out: result_transposition,
             restart_btn: components.Button(visible=True),
-            error_txt: components.Textbox(visible=False)
+            error_txt2: components.Textbox(visible=False)
             }
 
 
@@ -210,7 +220,7 @@ with gr.Blocks() as demo:
     gr.Markdown(
         """
         # KaraokeNet
-        Wähle ein Lied aus und gebe dein bestes es so gut wie möglich nachzusingen.
+        Bringe deine Karaoke Skills auf ein neues Level.
         """)
     error_txt = components.Textbox(label="Error", value="Du musst zuerst ein Lied auswählen", visible=False)
     with gr.Row() as starting_layout:
@@ -220,20 +230,21 @@ with gr.Blocks() as demo:
             ready_to_begin_btn = components.Button("Klicke hier zum Starten")
 
     with gr.Column() as testing_layout:
-        song_out = components.Audio(label="Song", visible=False)
-        instrumental_out = components.Audio(label="Instrumentalversion (KI-generiert)", visible=False)
+        song_out = components.Audio(label="Song", visible=False, min_width=100, show_download_button=False)
+        instrumental_out = components.Audio(label="Instrumentalversion (KI-generiert)", visible=False, min_width=100,
+                                            show_download_button=False)
         lyrics_out = components.Textbox(visible=False)
 
     with gr.Column() as singing_layout:
-        recording_animation_video = components.Video(visible=False, interactive=False)
-        get_result_btn = components.Button(value="Klicke mich um das Ergebnis zu erhalten", visible=False)
+        recording_animation_video = components.Video(visible=False, interactive=False, show_download_button=False)
+        error_txt2 = components.Textbox(label="Error", value="Du musst zum gesamten Lied singen.", visible=False)
+        get_result_btn = components.Button(value="Ergebnis auswerten", visible=False)
 
     with gr.Column() as result_layout:
         result_plot = components.Plot(label="Bewertung", visible=False)
         result_avg_semitones_out = components.Textbox(label="Detaillierte Analyse des Gesangs", visible=False)
         result_recognized_lyrics_out = components.Textbox(label="KI-generierte Lyrics deiner Aufnahme", visible=False)
-        restart_btn = components.Button(value="Hier gelangst du zum Startbildschirm zurück", visible=False)
-
+        restart_btn = components.Button(value="Startmenü", visible=False)
 
     train_song_btn.click(fn=train_song, inputs=[song_chosen_inp], outputs=[testing_layout, song_out, instrumental_out,
                                                                            lyrics_out, error_txt])
@@ -251,9 +262,10 @@ with gr.Blocks() as demo:
                                                                                 result_recognized_lyrics_out,
                                                                                 result_avg_semitones_out,
                                                                                 restart_btn,
-                                                                                error_txt])
+                                                                                error_txt2])
     restart_btn.click(fn=restart, inputs=[], outputs=[result_layout, starting_layout, song_chosen_inp,
                                                       recording_animation_video])
 
 if __name__ == "__main__":
     demo.launch()
+
