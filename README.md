@@ -33,13 +33,13 @@ Für die Erkennung ihrer Aussprache während des Singens nutzen wir WhisperAI. D
 
 ![starten](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/88941996-e89a-4d63-a297-4c87c341f3a3)
    
-5. Singen: Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur letzten Sekunde das Video abspielen lassen. Andernfalls erhalten sie keine Bewertung zu ihrer gesungenen Karaoke-Version, sondern nur eine Fehlermeldung.
+4. Singen: Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur letzten Sekunde das Video abspielen lassen. Andernfalls erhalten sie keine Bewertung zu ihrer gesungenen Karaoke-Version, sondern nur eine Fehlermeldung.
 
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/c4eacde5-244b-446b-8546-aa7dc7f6b0db)
+![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/94164bb3-085f-4a97-897b-c717b87ec248)
 
-6. Bewertung: Sie erhalten sobald sie auf 'Klicken sie mich um das Ergebnis zu erhalten' ihr Ergebnis des gesungenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original bewertet.
-Sie erhalten ebenfalls eine Information, inwiefern die Software ihre Stimme transpondieren musste, um ein akkurateres Ergebnis zu erhalten.
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/a8e0b55c-0726-42a0-9209-febde4ffa394)
+5. Bewertung: Sie erhalten sobald sie auf 'Ergebnis auswerten' ihr Ergebnis des gesungenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original bewertet.
+Sie erhalten ebenfalls eine Information, inwiefern die Software ihre Stimme transponieren musste, um ein akkurateres Ergebnis zu erhalten.
+![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/dec82589-fb45-41d8-acda-49be52eeca39)
 
 
 Wir wünschen Ihnen viel Spaß und Erfolg mit unserer Karaokesoftware. Lassen Sie uns gemeinsam die Freude am Singen erleben!
