@@ -1,0 +1,8 @@
+gradio
+pyaudio
+matplotlib
+librosa
+soundfile
+numpy
+transformers
+
