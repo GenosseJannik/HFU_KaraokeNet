@@ -1,10 +1,27 @@
 import librosa
 import numpy as np
 
-def extract_notes(audio_file_path, num_sections=25):
-    # Load the audio file
-    y, sr = librosa.load(audio_file_path)
 
+# Funktion, die den Anfang des Liedes rausschneidet
+def trim_silence(y, sr, threshold=0.01):
+    # Berechnen der Root Mean Square (RMS)-Energie bzw. der Lautstärken
+    rms = librosa.feature.rms(y=y)[0]
+
+    # Finden des ersten Index, der den Schwellenwert in Lautstärke überschreitet
+    frames = np.nonzero(rms > threshold)[0]
+
+    start_sample = 0
+    if len(frames) > 0:
+        # Berechnen der Anzahl der abgeschnittenen Samples
+        start_sample = librosa.frames_to_samples(frames[0])
+
+        # Trim das Audiosignal ab diesem Punkt
+        y = y[start_sample:]
+
+    return y, sr, start_sample
+
+
+def extract_notes(y, sr, num_sections=100):
     # Calculate the duration of the audio in seconds
     duration = librosa.get_duration(y=y, sr=sr)
 
@@ -35,12 +52,20 @@ def extract_notes(audio_file_path, num_sections=25):
 
     return section_notes
 
-def compare_current_notes(audio_file_path1, audio_file_path2, num_sections=25):
+
+def compare_current_notes(vocals_original, vocals_user, num_sections=100):
+    # Laden und Trimmen des Audiosignals
+    y, sr = librosa.load(vocals_original)
+    trimmed_y, sr, trimmed_samples_beginning = trim_silence(y, sr)
+
+    cover_y, cover_sr = librosa.load(vocals_user)
+    trimmed_cover_y = cover_y[trimmed_samples_beginning:]  # Schneidet die gleiche Anzahl an Samples ab
+
     # Extract current notes for the first audio file
-    notes1 = extract_notes(audio_file_path1, num_sections=num_sections)
+    notes1 = extract_notes(trimmed_y, sr, num_sections=num_sections)
 
     # Extract current notes for the second audio file
-    notes2 = extract_notes(audio_file_path2, num_sections=num_sections)
+    notes2 = extract_notes(trimmed_cover_y, cover_sr, num_sections=num_sections)
 
     # Convert MIDI notes to note names
     notes1_names = [note_num_to_name(note) if note is not None else "None" for note in notes1]
@@ -106,40 +131,8 @@ def calculate_grade(overall_transposed_semitone_difference):
     if overall_transposed_semitone_difference is None:
         return 0.0
 
-    max_difference = 10  # Maximum difference assumed
+    max_difference = 5  # Maximum difference assumed
     percentage = (1 - abs(overall_transposed_semitone_difference) / max_difference) * 100
 
     return max(percentage, 0.0)
 
-# Paths to the audio files
-original_file = r"C:\Users\julia\Desktop\KaraokeNet\Musikbeispiel\In_The_End_(Original)\vocals_original.mp3"
-cover_file = r"C:\Users\julia\Desktop\KaraokeNet\Musikbeispiel\In_The_End_(Cover)\vocals_cover.mp3"
-
-# Compare the current notes between the two audio files
-overall_semitone_difference, semitone_differences, notes_original, notes_cover = compare_current_notes(original_file, cover_file)
-
-# Automatically determine transposition
-transposition = auto_transpose_avg_notes(notes_original, notes_cover)
-
-# Transpose the cover notes
-transposed_cover_notes = transpose_notes(notes_cover, -transposition)
-
-# Calculate the average differences in semitones for the transposed cover notes
-overall_transposed_semitone_difference, transposed_semitone_differences = calculate_diff(notes_original, transposed_cover_notes)
-
-# Calculate the percentage score based on the transposed average difference in semitones
-percentage_score = calculate_grade(overall_transposed_semitone_difference)
-
-# Display the results
-print("Overall Average Difference in Semitones: \n", overall_semitone_difference)
-print("Average Differences in Semitones for Each Section: \n", semitone_differences)
-print("Current Notes for Original: \n", notes_original)
-print("Current Notes for Cover: \n", notes_cover)
-
-print("\nAfter Transposition:")
-print("Transposition (in semitones): \n", transposition)
-print("Transposed Cover Notes: \n", transposed_cover_notes)
-print("Overall Average Difference in Semitones: \n", overall_transposed_semitone_difference)
-print("Average Differences in Semitones for Each Section: \n", transposed_semitone_differences)
-
-print(f"Bewertung in Prozent: {percentage_score:.1f}%")
