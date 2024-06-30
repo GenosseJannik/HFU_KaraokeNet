@@ -6,14 +6,14 @@ Repository for semesterproject about a tool that will help you improve your skil
 Herzlich willkommen zu unserer revolutionären Karaokesoftware! Hier erleben Sie Karaoke wie nie zuvor, unterstützt durch modernste Technologien und benutzerfreundliche Schnittstellen. Wir haben eine leistungsstarke Kombination von Tools integriert, um Ihnen ein unvergessliches Karaoke-Erlebnis zu bieten.
 
 ## Unsere Technologien
-Gradio – Benutzerfreundliches Interface
+### Gradio – Benutzerfreundliches Interface
 Unsere Software verwendet [Gradio für die Benutzeroberfläche](./interface_karaokenet.py). Gradio ist ein intuitives Framework, das es uns ermöglicht, interaktive Webanwendungen zu erstellen. Mit Gradio können Sie ganz einfach durch unsere Liederauswahl navigieren und das Karaoke-Erlebnis starten – alles in einer übersichtlichen und benutzerfreundlichen Umgebung.
 
 ### Demucs – Musikalische Trennung
 Wir setzen Demucs, ein fortschrittliches neuronales Netz, ein, um Songs in ihre Bestandteile zu zerlegen. [Demucs trennt das Lied in Instrumental- und Karaoke-Versionen](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/song.py#L37), sodass Sie nur die Instrumentalmusik hören, während der Text angezeigt wird. Dies ermöglicht Ihnen ein authentisches Karaoke-Erlebnis mit hoher Klangqualität. Die Karaoke-Verions wird genutzt, um ihre Karaoke-Version mit der des Originalliedes zu vergleichen.
 
 ### Librosa – Bewertung der Gesangsleistung
-Um Ihre gesangliche Leistung zu bewerten, verwenden wir Librosa, eine leistungsstarke Bibliothek für die Audioanalyse. Librosa analysiert die [Tonhöhe](./pitch_comparison_transposition.py), das Timing und andere Aspekte Ihres Gesangs, um Ihnen ein detailliertes Feedback zu geben. So können Sie Ihre Fähigkeiten verbessern und Ihre Karaoke-Performance optimieren.
+Um Ihre gesangliche Leistung zu bewerten, verwenden wir Librosa, eine leistungsstarke Bibliothek für die Audioanalyse. [Librosa analysiert die Tonhöhe](./pitch_comparison_transposition.py), das Timing und andere Aspekte Ihres Gesangs, um Ihnen ein detailliertes Feedback zu geben. So können Sie Ihre Fähigkeiten verbessern und Ihre Karaoke-Performance optimieren.
 
 ### WhisperAI – Spracherkennung
 Für die [Erkennung ihrer Aussprache](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/speech_comparison.py#L30-L37) während des Singens nutzen wir WhisperAI. Diese leistungsstarke Spracherkennungssoftware sorgt dafür, dass Ihre gesungenen Worte präzise erkannt werden. Im Anschluss wird berechnet, inwieweit der durch WhisperAi generierte Text ihrer Aufnahme ähnlich zu demm WhisperAi generierten Text des Originalliedes ist, wofür die [Anzahl an unterschiedlichen Wörter berechnet wird](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/speech_comparison.py#L40-L55).
@@ -41,6 +41,7 @@ Für die [Erkennung ihrer Aussprache](https://github.com/GenosseJannik/HFU_Karao
 Sie erhalten ebenfalls eine Information, inwiefern die Software ihre Stimme transponieren musste, um ein akkurateres Ergebnis zu erhalten.
 ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/dec82589-fb45-41d8-acda-49be52eeca39)
 
+Wenn sie das System auch auf ihrem eigenen Rechner nutzen wollen, finden sie [hier](./Anleitung.md) genau die richtige Anleitung für sie.
 
 Wir wünschen Ihnen viel Spaß und Erfolg mit unserer Karaokesoftware. Lassen Sie uns gemeinsam die Freude am Singen erleben!
 
