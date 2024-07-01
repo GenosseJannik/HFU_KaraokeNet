@@ -32,7 +32,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    Die bestehende Software kann um weitere Lieder erweitert werden, indem Sie in den Unterverzeichnissen von [Songs](./Songs) die entsprechenden Dateien hinzufügen.
    Zu den Dateien, die sie hinzufügen müssen gehören:
 
-   [Songs/Video](./Songs/Videos): An diesem Ort sind die Videos, die die Texte der Lieder visualisieren, als .mp4-Datei abzulegen. Diese Datei ist zwingend notwendig.
+   [Songs/Videos](./Songs/Videos): An diesem Ort sind die Videos, die die Texte der Lieder visualisieren, als .mp4-Datei abzulegen. Diese Datei ist zwingend notwendig.
 
    [Songs/Lyrics](./Songs/Lyrics): Damit die Bewertung der Aussprache besser funktioniert, speichern Sie hier die Songtexte als .txt-Datei ab. Wenn sie hier keine Datei abspeichern,
    so wird der KI-generierte Text des Original Liedes zur Bewertung genommen.
