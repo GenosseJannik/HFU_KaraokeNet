@@ -5,10 +5,12 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import shutil
 import time
 
+# Ermittelt das Arbeitsverzeichnis
+project_root = os.path.dirname(os.path.abspath(__file__))
 # songs_dir besteht aus den 4 Unterverzeichnissen Songs, Animations, Lyrics und Word Distances
-songs_dir = r"Songs"
+songs_dir = os.path.join(project_root, "Songs")
 # seperated_songs_dir enthält ein Ordner für jedes Lied, in dem die Audiodateien vocals.mp3 und no_vocals.mp3 sind
-seperated_songs_dir = r"separated/mdx_q"
+separated_songs_dir = os.path.join(project_root, "separated/mdx_q")
 
 
 class Song:
@@ -21,8 +23,8 @@ class Song:
         self.transcribed_lyrics = None
         self.word_distance_path = f"{songs_dir}/Word_Distances/{name}.txt"
         self.video_path = f"{songs_dir}/Videos/{name}.mp4"
-        self.instrumental_path = f"{seperated_songs_dir}/{name}/no_vocals.mp3"
-        self.vocal_path = f"{seperated_songs_dir}/{name}/vocals.mp3"
+        self.instrumental_path = f"{separated_songs_dir}/{name}/no_vocals.mp3"
+        self.vocal_path = f"{separated_songs_dir}/{name}/vocals.mp3"
         self.word_distance = None
 
     def set_lyrics(self):
