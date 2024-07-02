@@ -1,8 +1,8 @@
 import socket
 import pickle
-import compareClass
-import speech_comparison
-import mfcc_comparison
+from . import compareClass
+from . import speech_comparison
+from . import mfcc_comparison
 
 #This file handles the communication with the Client
 
