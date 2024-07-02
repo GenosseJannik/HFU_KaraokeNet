@@ -1,0 +1,14 @@
+Weekly Scrum
+
+Abwesenheit:-
+
+Raum C 001 ist unser eigener Raum
+
+
+Markdown (MD), bei librosa bsp passiert die und die Berechnung
+
+Programmieren das pfade relaltiv sind und das nicht komplett umgeändert werden muss (Leichtigkeit anpassen)
+
+Oder extra beschreibung was geändert werden muss verzeichnis
+
+Skalieren der benutzeroberfläche damit man nicht seitlich rumscrollt
