@@ -13,13 +13,12 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 
 1. **Repository klonen**:
 
-   Öffnen Sie ein Terminal und führen Sie die folgenden Befehle aus, um das Repository zu klonen und sich zu diesem zu navigieren:
+   Öffnen Sie ein Terminal und führen Sie die folgenden Befehle einzeln nacheinander aus, um das Repository zu klonen und sich zu diesem zu navigieren:
 
    ```sh
-   1. git clone https://github.com/GenosseJannik/HFU_KaraokeNet
-
+   git clone https://github.com/GenosseJannik/HFU_KaraokeNet
    
-   2. cd HFU_KaraokeNet
+   cd HFU_KaraokeNet
    ```
    
 2. **Bibliotheken installieren**
