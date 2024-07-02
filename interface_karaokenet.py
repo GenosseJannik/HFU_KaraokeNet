@@ -7,8 +7,8 @@ import os
 import shutil
 import matplotlib.pyplot as plt
 from speech_comparison import compare_speech, transcribe
-from pitch_comparison_transposition import (auto_transpose_avg_notes, transpose_notes, calculate_diff, calculate_grade,
-                                            compare_current_notes)
+from pitch_comparison_transposition import compare_pitch
+from timing_comparison import compare_timing
 import Sender
 import compareClass
 import socket
