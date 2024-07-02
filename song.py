@@ -125,6 +125,7 @@ def set_song_objects():
             if not (os.path.exists(songs[song_name].vocal_path) and os.path.exists(songs[song_name].instrumental_path)
                     and os.path.exists(songs[song_name].song_path) and os.path.exists(songs[song_name].lyrics_path)
                     and os.path.exists(songs[song_name].word_distance_path)):
+                print("Dein Ernst")
                 songs[song_name].create_new_song()
             songs[song_name].set_word_distance()
 
