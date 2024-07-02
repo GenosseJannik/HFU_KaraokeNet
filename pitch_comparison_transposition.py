@@ -2,10 +2,10 @@ import librosa
 import numpy as np
 
 
-# Funktion, die den Anfang des Liedes rausschneidet
-def trim_silence(y, sr, threshold=0.01):
+# Funktion, die den Anfang des Liedes rausschneidet. Kann auch nur mit einem Parameter aufgerufen werden.
+def trim_silence(y_original, y_cover=None, threshold=0.01):
     # Berechnen der Root Mean Square (RMS)-Energie bzw. der Lautstärken
-    rms = librosa.feature.rms(y=y)[0]
+    rms = librosa.feature.rms(y=y_original)[0]
 
     # Finden des ersten Index, der den Schwellenwert in Lautstärke überschreitet
     frames = np.nonzero(rms > threshold)[0]
@@ -15,10 +15,12 @@ def trim_silence(y, sr, threshold=0.01):
         # Berechnen der Anzahl der abgeschnittenen Samples
         start_sample = librosa.frames_to_samples(frames[0])
 
-        # Trim das Audiosignal ab diesem Punkt
-        y = y[start_sample:]
-
-    return y, sr, start_sample
+    # Trim die Audiosignale ab diesem Punkt
+    y_original = y_original[start_sample:]
+    if y_cover is None:
+        return y_original
+    y_cover = y_cover[start_sample:]
+    return y_original, y_cover
 
 
 def extract_notes(y, sr, num_sections=100):
@@ -55,17 +57,16 @@ def extract_notes(y, sr, num_sections=100):
 
 def compare_current_notes(vocals_original, vocals_user, num_sections=100):
     # Laden und Trimmen des Audiosignals
-    y, sr = librosa.load(vocals_original)
-    trimmed_y, sr, trimmed_samples_beginning = trim_silence(y, sr)
+    y_original, sr_original = librosa.load(vocals_original)
+    y_cover, sr_cover = librosa.load(vocals_user)
 
-    cover_y, cover_sr = librosa.load(vocals_user)
-    trimmed_cover_y = cover_y[trimmed_samples_beginning:]  # Schneidet die gleiche Anzahl an Samples ab
+    trimmed_y_original, trimmed_y_cover = trim_silence(y_original, y_cover)
 
     # Extract current notes for the first audio file
-    notes1 = extract_notes(trimmed_y, sr, num_sections=num_sections)
+    notes1 = extract_notes(trimmed_y_original, sr_original, num_sections=num_sections)
 
     # Extract current notes for the second audio file
-    notes2 = extract_notes(trimmed_cover_y, cover_sr, num_sections=num_sections)
+    notes2 = extract_notes(trimmed_y_cover, sr_cover, num_sections=num_sections)
 
     # Convert MIDI notes to note names
     notes1_names = [note_num_to_name(note) if note is not None else "None" for note in notes1]
@@ -136,3 +137,22 @@ def calculate_grade(overall_transposed_semitone_difference):
 
     return max(percentage, 0.0)
 
+
+def compare_pitch(original_vocal_path, user_vocals_path):
+    overall_semitone_difference, semitone_differences, notes_original, notes_cover = compare_current_notes(
+        original_vocal_path, user_vocals_path)
+
+    # Automatically determine transposition
+    transposition = auto_transpose_avg_notes(notes_original, notes_cover)
+
+    # Transpose the cover notes
+    transposed_cover_notes = transpose_notes(notes_cover, -transposition)
+
+    # Calculate the average differences in semitones for the transposed cover notes
+    overall_transposed_semitone_difference, transposed_semitone_differences = calculate_diff(notes_original,
+                                                                                             transposed_cover_notes)
+
+    # Calculate the percentage score based on the transposed average difference in semitones
+    result_singing_percentage = calculate_grade(overall_semitone_difference)
+
+    return overall_transposed_semitone_difference, transposition, result_singing_percentage
