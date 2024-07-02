@@ -6,9 +6,9 @@ Hier befindet sich die Anleitung dafür, wie Sie die Software auch auf Ihrem Com
 
 Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten auf Ihrem Computer installiert sind:
 
-- Python 3.7 oder höher
-- pip (Python Package Installer)
-- Git
+- Python 3.7 oder höher --> https://www.python.org/downloads/
+- pip (Python Package Installer) --> https://pypi.org/project/pip/
+- Git --> https://git-scm.com/downloads
 
 
 1. **Repository klonen**:
