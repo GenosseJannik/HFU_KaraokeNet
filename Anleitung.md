@@ -45,14 +45,32 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 
 
 
-5. **KaraokeNet starten**
+4. **Interface starten**
 
-   Alles bis hierhin erledigt? Gut, dann müssen Sie nur noch das Skript interface_karaokenet.py ausführen. Dies können sie entweder in ihrer Entwicklungsumgebung machen, wenn sie das gesamte
-   Repository in einem Projekt gespeichert haben, oder aber in einem Terminal, in welchem Sie sich erst zu dem Github Repository navigieren müssen. Im Anschluss können sie das Interface mit
+   Navigieren sie sich in einem Terminal zum Github Repository und führen Sie folgenden Befehl aus.
    diesem Befehl starten:
    ```sh
    python interface_karaokenet.py
    ```
-   Wie Sie sich nun auf der Website unserer KaraokeNet Software zurechtfinden können erfahren Sie [hier](./README.md).
+   Wie Sie sich auf der Website unserer der Software als Sänger zurechtfinden können erfahren Sie [hier](./README.md).
+   
+5. **Nutzung des Interface mit existierenden Karaoke-Versionen**
+   
+   Das standartmäßigen Interface ist so vorgesehen, dass der Benutzer zur Laufzeit seine Karaoke-Version erstellt und diese im Nachhinein bewertet wird. Wenn sie selbst nicht singen möchten,
+   aber dennoch sehen wollen wie die Software bereits existierende Karaoke-Versionen bewertet, müssen sie folgende Anweisungen beachten.
+   1. Da das reine Testen nicht für die Benutzer vorgesehen ist, müssen sie [diesen Befehl](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/interface_karaokenet.py#L252) im
+   Interface ändern. Sie ersetzen den Befehl durch:
+   ```sh
+    with gr.Column() as testing_layout:
+   ```
+   Dies stellt sicher, dass die Komponente zum Testen angezeigt wird. Implizit bedeutet der Befehl "with gr.Column(visible=True) as testing_layout.
+
+   
+   2. Ihr Benutzeroberfläche sollte nun folgendermaßen aussehen:
+   ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/1473c629-2023-4639-add9-8c7c7909d7b2)
+
+   Zunächst wählen sie das Lied aus, dessen existierende Karaoke-Version sie bewerten lassen wollen. Als nächstes fügen sie das Lied als .wav Datei in der unteren Box per Drag-And-Drop ab.
+
+   3. Testing Drücken
    
 
