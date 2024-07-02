@@ -34,7 +34,7 @@ def format_lyrics(lyrics):
 def transcribe(audio_path):
     y, sr = librosa.load(audio_path)
     # Schneidet den Anfang raus, damit die KI nicht aus Hintergrundrauschen irgendwelche Wörter erkennt
-    trimmed_y, _, _ = trim_silence(y, sr)
+    trimmed_y = trim_silence(y)
 
     trimmed_y = trimmed_y.astype(np.float32)  # Umwandlung der Frequenzen von int zu float für transcriber
     trimmed_y /= np.max(np.abs(y))  # Normieren auf Werte zwischen 0 und 1
