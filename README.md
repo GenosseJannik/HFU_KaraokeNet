@@ -25,31 +25,35 @@ Für die [Erkennung ihrer Aussprache](https://github.com/GenosseJannik/HFU_Karao
    
 ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/aeb06ba0-bf50-451a-876f-e8e789f2f96e)
 
-3. Von hier aus können Sie entweder Schritt 4 befolgen, um selber eine Karaoke-Version zu singen, oder aber Sie laden eine bereits existierende Karaoke-Version hoch, was in Schritt 4 erklärt
-   wird.
 
-4. Aufnahme starten:
-   4.1 Klicken Sie auf das Mikrofon, um das Video mit der Instrumentalversion und dem Text zu laden.
+Von hier aus können Sie entweder Schritt 3 befolgen, um selber eine Karaoke-Version zu singen, oder aber Sie laden eine bereits existierende Karaoke-Version hoch, was in Schritt 4 erklärt
+wird.
+
+
+3. Aufnahme starten:
+   
+   3.1 Klicken Sie auf das Mikrofon, um das Video mit der Instrumentalversion und dem Text zu laden.
    ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/9ee65dc2-8ba0-45ef-80a6-697c4a3a3c02)
 
-   4.2  Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur
+   3.2  Singen Sie mit dem angezeigten Text mit. Ihre Stimme wird ab Start des Videos bis zum Ende aufgenommen. Dabei ist es wichtig, dass sie zu Beginn von Sekunde 0 an starten und bis zur
    letzten Sekunde das Video abspielen lassen. Andernfalls erhalten sie keine Bewertung zu ihrer gesungenen Karaoke-Version.
    
    ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/833a71e4-ef18-4421-9c53-4e5a7914ccac)
 
-5. Cover Hochladen: 
-   5.1 Klicken sie auf das Upload-Emoji, um in das Layout zu gelangen, indem sie eine Karaoke-Version des ausgewählten Liedes hochladen können.
+4. Cover Hochladen:
+   
+   4.1 Klicken sie auf das Upload-Emoji, um in das Layout zu gelangen, indem sie eine Karaoke-Version des ausgewählten Liedes hochladen können.
    ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/42f2696c-b5b7-467c-8b98-fa4532282c69)
 
-   5.2 Ziehen sie ihre bereits existierende Karaoke-Version in .wav-Format per Drag and Drop in die Box rein. Ein paar Beispiele für Cover-Versionen finden Sie in dem Ordner [Cover_Examples](./Cover_Examples).
+   4.2 Ziehen sie ihre bereits existierende Karaoke-Version in .wav-Format per Drag and Drop in die Box rein. Ein paar Beispiele für Cover-Versionen finden Sie in dem Ordner [Cover_Examples](./Cover_Examples).
    ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/8a6af38e-8bd5-43fd-9955-427b73531563)
 
 
-6. Bewertung: Sie erhalten sobald Sie auf 'Evaluate result'  drücken ihr Ergebnis des gesungenen oder hochgeladenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original
+5. Bewertung: Sie erhalten sobald Sie auf 'Evaluate result'  drücken ihr Ergebnis des gesungenen oder hochgeladenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original
 anhand von bestimmten Kriterien bewertet. Sie erhalten ebenfalls detaillierte Information darüber, um wie viele Seminoten der Gesang des Covers sich von dem des Originals unterschieden hat.
 ![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/2131d5ed-8119-430a-9a31-e658bdcf73f8)
 
-7. Durch Klicken auf den 'Start menu' Button gelangen sie zurück zum Startbildschirm und können erneut eine Karaoke-Aufnahme starten oder hochladen.
+6. Durch Klicken auf den 'Start menu' Button gelangen sie zurück zum Startbildschirm und können erneut eine Karaoke-Aufnahme starten oder hochladen.
 
 
 
