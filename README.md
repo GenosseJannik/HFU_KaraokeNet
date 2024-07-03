@@ -23,7 +23,7 @@ Für die [Erkennung ihrer Aussprache](https://github.com/GenosseJannik/HFU_Karao
 
 2. Ausprobieren: Bevor sie mit dem richtigen Versuch loslegen, besteht für sie die Möglichkeit das Lied welches sie singen möchten, vorher zu proben. Hier können sie sich den Text des Liedes sowie die Rhytmik und Melodien des Gesangs einprägen.
    
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/16bd1e0c-8466-4a4c-bda2-b6355a7d387e)
+![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/aeb06ba0-bf50-451a-876f-e8e789f2f96e)
 
 3. Von hier aus können Sie entweder Schritt 4 befolgen, um selber eine Karaoke-Version zu singen, oder aber Sie laden eine bereits existierende Karaoke-Version hoch, was in Schritt 4 erklärt
    wird.
