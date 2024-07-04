@@ -3,6 +3,7 @@ import numpy as np
 
 
 # Funktion, die den Anfang des Liedes rausschneidet. Kann auch nur mit einem Parameter aufgerufen werden.
+# Wenn sie mit zwei Liedern aufgerufen wird, so wird die zweite Version gleich wie die erste gekürzt.
 def trim_silence(y_original, y_cover=None, threshold=0.01):
     # Berechnen der Root Mean Square (RMS)-Energie bzw. der Lautstärken
     rms = librosa.feature.rms(y=y_original)[0]
@@ -17,13 +18,16 @@ def trim_silence(y_original, y_cover=None, threshold=0.01):
 
     # Trim die Audiosignale ab diesem Punkt
     y_original = y_original[start_sample:]
+
     if y_cover is None:
         return y_original
+
     y_cover = y_cover[start_sample:]
+
     return y_original, y_cover
 
 
-def extract_notes(y, sr, num_sections=100):
+def extract_notes(y, sr, num_sections):
     # Calculate the duration of the audio in seconds
     duration = librosa.get_duration(y=y, sr=sr)
 
@@ -55,10 +59,16 @@ def extract_notes(y, sr, num_sections=100):
     return section_notes
 
 
-def compare_current_notes(vocals_original, vocals_user, num_sections=100):
+def compare_current_notes(vocals_original, vocals_user):
     # Laden und Trimmen des Audiosignals
     y_original, sr_original = librosa.load(vocals_original)
     y_cover, sr_cover = librosa.load(vocals_user)
+
+    duration_in_seconds = librosa.get_duration(y=y_original, sr=sr_original)
+
+    # Setzen der Anzahl der Abschnitte basierend auf der Dauer
+    sections_per_second = 2  # Je größer, desto mehr Sektionen
+    num_sections = int(duration_in_seconds * sections_per_second)
 
     trimmed_y_original, trimmed_y_cover = trim_silence(y_original, y_cover)
 
@@ -132,7 +142,7 @@ def calculate_grade(overall_transposed_semitone_difference):
     if overall_transposed_semitone_difference is None:
         return 0.0
 
-    max_difference = 5  # Maximum difference assumed
+    max_difference = 6  # Maximum difference assumed
     percentage = (1 - abs(overall_transposed_semitone_difference) / max_difference) * 100
 
     return max(percentage, 0.0)
