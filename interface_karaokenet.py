@@ -14,8 +14,8 @@ from scripts import js, css
 # Ermittelt das Arbeitsverzeichnis
 project_root = os.path.dirname(os.path.abspath(__file__))
 
-#
-images = os.path.join(project_root, 'Icons/')
+# Ordner, in dem die Icons sind
+icons = os.path.join(project_root, 'Icons/')
 
 # Ordner, in dem die Karaoke-Version des Benutzers gespeichert wird
 vocals_user_dir = os.path.join(project_root, r"Vocals_User/[Karaoke] ")
@@ -25,11 +25,13 @@ song_names = list(songs.keys())  # Liste, in der die Namen aller Lieder sind
 paused = False
 aborted_recording = False
 finished_recording = False
+
+# Globale Variable zur Kennzeichnung, dass eine Datei hochgeladen und nicht gesungen wird
 uploaded_cover = False
 
 
 # Erstellt eine Audioaufnahme des Benutzers während er singt und speichert diese mit dem Namen
-# [Karaoke] Name_des_Liedes.wav
+# [Karaoke] Name_des_Liedes.wav in vocals_user_dir ab. Die Aufnahme geht so lange wie das Lied.
 def record_audio(length_in_seconds, output_file_name, frames_per_buffer=1024, format=pyaudio.paInt16, channels=1,
                  rate=44100):
     global paused
@@ -150,10 +152,8 @@ def plot_results(result_dict):
 def estimate_result(song_chosen, uploaded_cover_path):
     global finished_recording
     if finished_recording:  # Falls der Nutzer das Lied vollständig gesungen hat
-        print("finished")
         user_vocal_path = vocals_user_dir + song_chosen + ".wav"  # Pfad zur gerade erstellten Aufnahme des Benutzers
     elif not uploaded_cover:  # Aufnahme nicht vollständig, aber angefangen
-        print("not uploaded")
         return {cancel_error: components.Textbox(visible=True)}
     elif uploaded_cover_path is None:  # Es wurde auf "Evaluate result" gedrückt ohne eine Datei hochzuladen
         return {upload_error: components.Textbox(visible=True)}
@@ -234,21 +234,21 @@ with gr.Blocks(js=js, css=css) as demo:
 
         with gr.Column(elem_classes="gr-column"):
             # Button zum Üben des ausgewählten Songs
-            training_icon = images + "practice.png"
+            training_icon = icons + "practice.png"
             with gr.Row(elem_classes="gr-button-container"):
                 train_song_btn = components.Button("", icon=training_icon, elem_classes="gr-button")
                 components.Markdown("**Practice the song**", elem_classes="gr-button-tooltip gr-button-tooltip-right")
                 components.Markdown("**Practice the song**", elem_classes="gr-button-tooltip")
 
             # Button zum Starten der Aufnahme
-            microphone_icon = images + "mikro_icon.png"
+            microphone_icon = icons + "mikro_icon.png"
             with gr.Row(elem_classes="gr-button-container"):
                 singing_btn = components.Button("", icon=microphone_icon, elem_classes="gr-button")
                 components.Markdown("**Start recording**", elem_classes="gr-button-tooltip gr-button-tooltip-right")
                 components.Markdown("**Start recording**", elem_classes="gr-button-tooltip")
 
             # Button, um eine bereits vorhandene Cover-Version einzufügen
-            upload_icon = images + "upload_icon.png"
+            upload_icon = icons + "upload_icon.png"
             with gr.Row(elem_classes="gr-button-container"):
                 upload_cover_btn = components.Button("", icon=upload_icon, elem_classes="gr-button")
                 components.Markdown("**Upload a Cover**", elem_classes="gr-button-tooltip gr-button-tooltip-right")
