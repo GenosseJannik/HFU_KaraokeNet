@@ -5,12 +5,11 @@ from moviepy.editor import VideoFileClip, AudioFileClip
 import shutil
 import time
 
+
 # Ermittelt das Arbeitsverzeichnis
 project_root = os.path.dirname(os.path.abspath(__file__))
-# songs_dir besteht aus den 4 Unterverzeichnissen Songs, Animations, Lyrics und Word Distances
+# songs_dir besteht aus den 5 Unterverzeichnissen Songs, Animations, Lyrics, Word Distances und Seperated
 songs_dir = os.path.join(project_root, "Songs")
-# seperated_songs_dir enthält ein Ordner für jedes Lied, in dem die Audiodateien vocals.mp3 und no_vocals.mp3 sind
-separated_songs_dir = os.path.join(project_root, "separated/mdx_q")
 
 
 class Song:
@@ -23,8 +22,8 @@ class Song:
         self.transcribed_lyrics = None
         self.word_distance_path = f"{songs_dir}/Word_Distances/{name}.txt"
         self.video_path = f"{songs_dir}/Videos/{name}.mp4"
-        self.instrumental_path = f"{separated_songs_dir}/{name}/no_vocals.mp3"
-        self.vocal_path = f"{separated_songs_dir}/{name}/vocals.mp3"
+        self.instrumental_path = f"{songs_dir}/Separated/mdx_q/{name}/no_vocals.mp3"
+        self.vocal_path = f"{songs_dir}/Separated/mdx_q/{name}/vocals.mp3"
         self.word_distance = None
 
     def set_lyrics(self):
@@ -43,11 +42,13 @@ class Song:
             song.write_audiofile(self.song_path, codec='mp3')  # Speichert das Lied an seinem Pfad
             song.close()
 
-    # Verwendung von demucs, wobei wir nur das Lied nur in Instrumental und Karaoke separieren müssen.
+    # Verwendung von demucs, wobei wir das Lied nur in Instrumental und Karaoke separieren müssen.
     # Durch mdx_q wird eine niedrigere Qualität zugunsten schnellerer Rechenzeit genutzt.
     def separate_song(self):
         if not (os.path.exists(self.vocal_path) and os.path.exists(self.instrumental_path)):
-            demucs.separate.main(["--mp3", "--two-stems", "vocals", "-n", "mdx_q", "-j", "2", self.song_path])
+            output_dir = os.path.join(project_root, "Songs", "Separated")
+            demucs.separate.main(["--mp3", "--two-stems", "vocals", "-n", "mdx_q", "-j", "2",
+                                 "-o", output_dir, self.song_path])
 
     def create_lyrics(self):
         self.lyrics = self.transcribed_lyrics
@@ -101,7 +102,7 @@ class Song:
     def create_new_song(self):
         self.create_song_file()  # Zuerst das Lied extrahieren
         self.separate_song()  # Dann aus dem Lied Instrumental- und Karaoke-Version extrahieren
-        self.transcribed_lyrics = transcribe(self.vocal_path)
+        self.transcribed_lyrics = transcribe(self.song_path)
         if not os.path.exists(self.lyrics_path):
             self.create_lyrics()
         self.overwrite_video()  # Audio des alten Videos mit Instrumental-Version überschreiben
@@ -125,7 +126,6 @@ def set_song_objects():
             if not (os.path.exists(songs[song_name].vocal_path) and os.path.exists(songs[song_name].instrumental_path)
                     and os.path.exists(songs[song_name].song_path) and os.path.exists(songs[song_name].lyrics_path)
                     and os.path.exists(songs[song_name].word_distance_path)):
-                print("Dein Ernst")
                 songs[song_name].create_new_song()
             songs[song_name].set_word_distance()
 
