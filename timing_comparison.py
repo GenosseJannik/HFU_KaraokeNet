@@ -34,7 +34,7 @@ def calculate_score(differences, tolerance):
     return score
 
 
-def compare_timing(original_file, cover_file, tolerance=0.12):
+def compare_timing(original_file, cover_file, tolerance=0.2):
     # Load audios
     y_original, sr_original = load_audio(original_file)
     y_cover, sr_cover = load_audio(cover_file)
@@ -53,3 +53,4 @@ def compare_timing(original_file, cover_file, tolerance=0.12):
     score = calculate_score(differences, tolerance)
 
     return score
+
