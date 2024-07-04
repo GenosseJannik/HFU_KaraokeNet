@@ -234,7 +234,7 @@ with gr.Blocks(js=js, css=css) as demo:
 
         with gr.Column(elem_classes="gr-column"):
             # Button zum Üben des ausgewählten Songs
-            training_icon = icons + "practice.png"
+            training_icon = icons + "practice_icon.png"
             with gr.Row(elem_classes="gr-button-container"):
                 train_song_btn = components.Button("", icon=training_icon, elem_classes="gr-button")
                 components.Markdown("**Practice the song**", elem_classes="gr-button-tooltip gr-button-tooltip-right")
@@ -257,7 +257,7 @@ with gr.Blocks(js=js, css=css) as demo:
     with gr.Column(visible=False) as upload_layout:
         explanation_md = components.Markdown()
         cover_upload_audio = components.Audio(sources=["upload"], type="filepath", show_label=False)
-        upload_error = components.Textbox(label="Error", value="You must first upload the cover.", visible=False)
+        upload_error = components.Textbox(label="Error", value="You must first upload a cover", visible=False)
         get_result_upload_btn = components.Button(value="Evaluate result")
 
     # Container für die Testoptionen
