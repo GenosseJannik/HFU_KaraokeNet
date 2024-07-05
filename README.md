@@ -62,7 +62,7 @@ wird.
 
 6. Bewertung: Sie erhalten sobald Sie auf 'Evaluate result'  drücken ihr Ergebnis des gesungenen oder hochgeladenen Liedes. In einem Balkendiagramm wird ihre Stimme im Vergleich zum Original
 anhand von bestimmten Kriterien bewertet. Sie erhalten ebenfalls detaillierte Information darüber, um wie viele Seminoten der Gesang des Covers sich von dem des Originals unterschieden hat.
-![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/2131d5ed-8119-430a-9a31-e658bdcf73f8)
+![image](https://github.com/GenosseJannik/HFU_KaraokeNet/assets/165167290/33d2b0a3-dfd2-4c14-b607-89d28e50ff3b)
 
 7. Durch Klicken auf den 'Start menu' Button gelangen sie zurück zum Startbildschirm und können erneut eine Karaoke-Aufnahme starten oder hochladen.
 
