@@ -2,8 +2,8 @@ import os
 import librosa
 import numpy as np
 
-original_file = r"KaraokeNet\Musikbeispiel\In The End (Original)\vocals_original.mp3"
-cover_file = r"KaraokeNet\Musikbeispiel\In The End (Cover)\vocals_cover.mp3"
+original_file = r"KaraokeNet\Cover_Examples\In The End (Original)\vocals_original.mp3"
+cover_file = r"KaraokeNet\Cover_Examplesl\In The End (Cover)\vocals_cover.mp3"
 
 def extract_features(audio_file):
     y, sr = librosa.load(audio_file, sr=None)

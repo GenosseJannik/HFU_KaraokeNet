@@ -1,8 +1,8 @@
 import socket
 import pickle
-from . import compareClass
-from . import speech_comparison
-from . import mfcc_comparison
+import compareClass
+import speech_comparison
+import pitch_comparison
 
 #This file handles the communication with the Client
 
@@ -13,7 +13,7 @@ def main():
 
 def send(compare_object: compareClass):
     #ip of Client
-    url = "192.168.43.151"
+    url = "141.28.73.17"
     port = 1337
 
     try:
@@ -37,7 +37,8 @@ def receive():
             with client_socket:
                 in_data = client_socket.recv(1024)  #get data from pickled object
                 received_karaoke = pickle.loads(in_data)    #extract all information of pickle object back into compare_object
-                received_karaoke.percentage_mfcc = mfcc_comparison.compare_mfcc(received_karaoke.karaoke_wav, received_karaoke.compared_song)
+                received_karaoke.overall_transposed_semitone_difference, received_karaoke.transposition, received_karaoke.result_singing_percentage = (pitch_comparison.compare_pitch
+                            (received_karaoke.compared_song, received_karaoke.karaoke_wav))
                 recognized_lyrics = speech_comparison.transcribe(received_karaoke.karaoke_wav)
                 received_karaoke.percentage_speech = speech_comparison.compare_speech(received_karaoke.compared_song, recognized_lyrics)
                 send(received_karaoke)

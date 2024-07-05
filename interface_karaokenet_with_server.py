@@ -13,6 +13,7 @@ import Sender
 import compareClass
 import socket
 import pickle
+import paramiko
 
 
 # Ermittelt das Arbeitsverzeichnis
@@ -27,21 +28,32 @@ paused = False
 aborted_recording = False
 finished_recording = False
 
+IP_ADRESS = "192.168.178.84"
+
 def receive(): 
     try:
         server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        server_socket.bind(("127.0.0.1", 1337))
+        server_socket.bind(("127.0.0.1", 80))
         server_socket.listen(1)
         print("Waiting for connection...")
-
-        while True: 
-            client_socket, _ = server_socket.accept()
-            with client_socket:
+        client_socket, _ = server_socket.accept()
+        with client_socket:
                 in_data = client_socket.recv(1024)
-                received_karaoke = pickle.loads(in_data)
+                received_comparison = pickle.loads(in_data)
+                return received_comparison
     except (socket.error, pickle.PickleError) as e:
         raise RuntimeError(e)
 
+def copyFileToServer(localpath:str):
+    ssh = paramiko.SSHClient()
+    ssh.load_host_keys(os.path.expanduser(os.path.join("~", ".ssh", "known_hosts")))
+    ssh.connect(IP_ADRESS, username="student", password="S33burgerßü")
+
+    sftp = ssh.open_sftp()
+    sftp.put(localpath, localpath)
+    sftp.close()
+
+    ssh.close()
 
 # Erstellt eine Audioaufnahme des Benutzers während er singt und speichert diese mit dem Namen
 # [Karaoke] Name_des_Liedes.wav
@@ -166,13 +178,13 @@ def estimate_result(song_chosen):
     if not finished_recording:  # Bei ungültiger Version erhält der Nutzer kein Ergebnis
         return {cancel_error: components.Textbox(visible=True)}
     user_vocal_path = vocals_user_dir + song_chosen + ".wav"  # Pfad zur gerade erstellten Aufnahme des Benutzers
+    copyFileToServer(user_vocal_path)
     # save wav file as object to transfer to server
-    # karaoke_wav = wave.open(karaoke_vocals)
-    # song_wav = wave.open(songs[song_chosen].song_path)
-    # comparisonObject = compareClass.compareClass(karaoke_wav, song_wav)
-    # Sender.send(comparisonObject)
-    # karaoke_wav.close()
-    # song_wav.close()
+    #karaoke_wav = wave.open(user_vocal_path)
+    #song_wav = wave.open(songs[song_chosen].song_path)
+    comparisonObject = compareClass.compareClass(user_vocal_path, songs[song_chosen].song_path)
+    Sender.send(comparisonObject)
+    received_comparison = receive()
     # Compare the current notes between the two audio files
     # Erstellt den KI-generierten Text der Aufnahme des Benutzers
     overall_transposed_semitone_difference, transposition, result_singing_percentage = (
@@ -181,8 +193,8 @@ def estimate_result(song_chosen):
     result_speech_percentage = compare_speech(songs[song_chosen], recognized_lyrics)
     result_timing_percentage = compare_timing(songs[song_chosen].vocal_path, user_vocal_path)
     # Dictionary, in dem die Kriterien die keys und die dazugehörigen Ergebnisse die values sind
-    result_dict = {"Aussprache": result_speech_percentage, "Timing": result_timing_percentage,
-                   "Gesang": result_singing_percentage}
+    result_dict = {"Aussprache": received_comparison.result_speech_percentage, "Timing": received_comparison.result_timing_percentage,
+                   "Gesang": received_comparison.result_singing_percentage}
 
     fig = plot_results(result_dict)  # Erstellt das Balkendiagramm
 
@@ -191,13 +203,13 @@ def estimate_result(song_chosen):
 
     if transposition == 1:
         result_transposition = components.Textbox(
-            value=f"Das Lied wurde um {transposition} Halbtonschritt transponiert.\n"
-                  f"Abweichung in Halbtonschritten: {overall_transposed_semitone_difference}",
+            value=f"Das Lied wurde um {received_comparison.transposition} Halbtonschritt transponiert.\n"
+                  f"Abweichung in Halbtonschritten: {received_comparison.overall_transposed_semitone_difference}",
             visible=True)
     else:
         result_transposition = components.Textbox(
-            value=f"Das Lied wurde um {transposition} Halbtonschritte transponiert.\n"
-                  f"Abweichung in Halbtonschritten: {overall_transposed_semitone_difference}",
+            value=f"Das Lied wurde um {received_comparison.transposition} Halbtonschritte transponiert.\n"
+                  f"Abweichung in Halbtonschritten: {received_comparison.overall_transposed_semitone_difference}",
             visible=True)
     return {result_layout: gr.Column(visible=True),
             singing_layout: gr.Column(visible=False),
