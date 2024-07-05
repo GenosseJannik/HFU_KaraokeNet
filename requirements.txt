@@ -5,4 +5,6 @@ librosa
 soundfile
 numpy
 transformers
-
+moviepy
+shutil
+scipy
