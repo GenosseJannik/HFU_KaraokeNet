@@ -1,4 +1,4 @@
-# Anleitung für die [Installation](./Anleitung.md).
+# Anleitung zur [Installation](./Anleitung.md).
 
 
 # Willkommen zu unserer Karaokesoftware!
