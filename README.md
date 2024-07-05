@@ -1,7 +1,9 @@
+# Anleitung für die [Installation](./Anleitung.md).
+
+
 # Willkommen zu unserer Karaokesoftware!
 Herzlich willkommen zu unserer revolutionären Karaokesoftware! Hier erleben Sie Karaoke wie nie zuvor, unterstützt durch modernste Technologien und benutzerfreundliche Schnittstellen. Wir haben eine leistungsstarke Kombination von Tools integriert, um Ihnen ein unvergessliches Karaoke-Erlebnis zu bieten.
 
-# Die Anleitung für die Installation finden sie [hier](./Anleitung.md).
 
 
 
