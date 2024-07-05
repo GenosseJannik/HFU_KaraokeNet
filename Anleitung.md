@@ -41,12 +41,13 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    Wenn Sie beide Dateien ablegen ist es wichtig, dass sie ihnen bis auf die Endung den gleichen Namen geben. Nur so kann das System einem Lied seinen Text zuordnen.
 
    Die Dateien in dem Ordner [Songs/Word Distances](./Songs/Word_Distances) beinhalten die Anzahl an Wörtern, die von dem originalen Sänger des Liedes von WhisperAI falsch erkannt wurden.
-   Diese Dateien werden dementsprechend von der Software selbst erstellt, weshalb sie hier *keine* eigene Datei anfertigen sollen. Ebenfalls werden auch die .mp3-Dateien in
-   [Songs/Songs](./Songs/Songs) automatisch aus der entsprechenden Video-Datei extrahiert. Wie genau das Integrieren eines neuen Liedes erfolgt, [erfahren sie hier](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/song.py#L98-L105).
+   Diese Dateien werden dementsprechend von der Software selbst erstellt, weshalb sie hier *keine* eigene Datei anfertigen sollen. Die .mp3-Dateien in
+   [Songs/Songs](./Songs/Songs) werden automatisch aus der entsprechenden Video-Datei extrahiert. Ebenfalls werden automatisch Verzeichnisse in dem Ordner [Songs/Seperated](./Songs/Seperated/mdx_q) erstellt. Dabei hat jedes Lied ein eigenes Verzeichnis, in dem die Karaoke-Version und Instrumental-Version als .mp3-Datei abgelegt werden.
+  Wie genau das Integrieren eines neuen Liedes erfolgt, [erfahren sie hier](https://github.com/GenosseJannik/HFU_KaraokeNet/blob/main/song.py#L101-L108).
 
 
 
-4. **Interface starten**
+5. **Interface starten**
 
    Alles bis hierhin erledigt? Gut, nun müssen Sie sich nur noch in einem Terminal zum Github Repository navigieren und folgenden Befehl ausführen.
    ```sh
