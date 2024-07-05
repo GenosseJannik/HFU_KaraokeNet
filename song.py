@@ -50,11 +50,12 @@ class Song:
             demucs.separate.main(["--mp3", "--two-stems", "vocals", "-n", "mdx_q", "-j", "2",
                                  "-o", output_dir, self.song_path])
 
+    # Wird nur aufgerufen, wenn der Benutzer nicht selbst Lyrics hochlädt
     def create_lyrics(self):
         self.lyrics = self.transcribed_lyrics
         with open(self.lyrics_path, "w") as lyrics_file:
             lyrics_file.write(self.lyrics)
-        self.word_distance = 0
+        self.word_distance = 0  # Da kein Originaltext existiert
         return
 
     # Diese Methode berechnet, wie viele Wörter von dem originalen Sänger des Liedes von der KI falsch erkannt werden
@@ -103,8 +104,8 @@ class Song:
         self.create_song_file()  # Zuerst das Lied extrahieren
         self.separate_song()  # Dann aus dem Lied Instrumental- und Karaoke-Version extrahieren
         self.transcribed_lyrics = transcribe(self.song_path)
-        if not os.path.exists(self.lyrics_path):
-            self.create_lyrics()
+        if not os.path.exists(self.lyrics_path):  
+            self.create_lyrics()  # Nutzung der KI-generierten Lyrics, wenn der Benutzer keine hochgeladen hat
         self.overwrite_video()  # Audio des alten Videos mit Instrumental-Version überschreiben
 
 
