@@ -138,7 +138,7 @@ def plot_results(result_dict):
     ax.set_xticks([0, 50, 100])  # Nur bei dem Wert 0, 50 und 100 werden die labels angezeigt
 
     background_color_hex = rgb_to_hex((34, 41, 54))  # Dunkleres blau als Hintergrund
-    ax.set_xticklabels(["Poor", "Average", "Good"])
+    ax.set_xticklabels(["Poor", "Average", "Best"])
     ax.set_facecolor(background_color_hex)
     fig.patch.set_facecolor(background_color_hex)
     ax.tick_params(axis='x', colors="white")  # Alle Umrandungen in weißer Farbe
