@@ -1,6 +1,8 @@
 # Willkommen zu unserer Karaokesoftware!
 Herzlich willkommen zu unserer revolutionären Karaokesoftware! Hier erleben Sie Karaoke wie nie zuvor, unterstützt durch modernste Technologien und benutzerfreundliche Schnittstellen. Wir haben eine leistungsstarke Kombination von Tools integriert, um Ihnen ein unvergessliches Karaoke-Erlebnis zu bieten.
 
+Wenn Sie das System auch auf ihrem eigenen Rechner nutzen wollen, finden sie [hier](./Anleitung.md) genau die richtige Anleitung für Sie.
+
 ## Unsere Technologien
 ### Gradio – Benutzerfreundliches Interface
 Unsere Software verwendet [Gradio für die Benutzeroberfläche](./interface_karaokenet.py#L227-L299). Gradio ist ein intuitives Framework, das es uns ermöglicht, interaktive Webanwendungen zu erstellen. Mit Gradio können Sie ganz einfach durch unsere Liederauswahl navigieren und das Karaoke-Erlebnis starten – alles in einer übersichtlichen und benutzerfreundlichen Umgebung.
@@ -61,8 +63,6 @@ anhand von bestimmten Kriterien bewertet. Sie erhalten ebenfalls detaillierte In
 7. Durch Klicken auf den 'Start menu' Button gelangen sie zurück zum Startbildschirm und können erneut eine Karaoke-Aufnahme starten oder hochladen.
 
 
-
-Wenn Sie das System auch auf ihrem eigenen Rechner nutzen wollen, finden sie [hier](./Anleitung.md) genau die richtige Anleitung für Sie.
 
 Wir wünschen Ihnen viel Spaß und Erfolg mit unserer Karaokesoftware. Lassen Sie uns gemeinsam die Freude am Singen erleben!
 
