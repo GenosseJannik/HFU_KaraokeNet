@@ -1,11 +1,11 @@
-##Dies ist die Zusammenfassung der Arbeitsspakete im Laufe des Projekts
+# Dies ist die Zusammenfassung der Arbeitsspakete im Laufe des Projekts
 
-#Jannik:
+## Jannik:
 - Aufsetzten der Projektstruktur
 - Servererstellung und Wartung
 - Kommunikation mit Server und vom Server zum Client
 
-#Fisnik/Naphy:
+## Fisnik/Naphy:
 - Dokumentation der Read Me (In zusammenarbeit mit Eduard)
 - Weekly Scrums
 - Rechteabklärung bezüglich der Musik
@@ -15,7 +15,7 @@
 - Erstellung des Präsentationsmaterials (Powerpoint, Plakate)
 - Gegen ende des Projekts etwas Tweaking an Benutzeroberfläche(Mit Eduard)
 
-#Julia:
+## Julia:
 - Informieren, welche Pakete/Imports sinnvoll sind
 - Einarbeitung in Librosa
 - Erster allgemeiner Vergleich mittels MFCCs (wird im Endprodukt nicht mehr verwendet)
@@ -30,7 +30,7 @@
 - Vergleich der Timestamps (Bwertung anhand prozentualer Anteil der zur richtigen Zeit war)
 - Überarbeiten der jeweiligen Toleranzwerte bei der Bewertung (strenge der Bewertung an die Lieder/Anforderungen anpassen)
 
-#Eduard:
+## Eduard:
 - Einarbeitung in Gradio, JavaScript (Zusammenarbeit mit Fisnik) und CSS für das Interface (interface_karaokenet.py)
 - Nutzung von WhisperAI zur Spracherkunnung und Implementierung des Sprachvergleichs (speech_comparison.py)
 - Automatisierung des Prozesses ein neues Lied hinzuzufügen (Aus Videodatei werden alle für das Systems notwendige Bestandteile extrahiert) (song.py)
