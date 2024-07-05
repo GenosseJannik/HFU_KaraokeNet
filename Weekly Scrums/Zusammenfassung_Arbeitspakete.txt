@@ -1,0 +1,21 @@
+##Dies ist die Zusammenfassung der Arbeitsspakete im Laufe des Projekts
+
+#Jannik:
+- Aufsetzten der Projektstruktur
+- Servererstellung und Wartung
+- Kommunikation mit Server und vom Server zum Client
+
+#Fisnik/Naphy:
+- Dokumentation der Read Me (In zusammenarbeit mit Eduard)
+- Weekly Scrums
+- Rechteabklärung bezüglich der Musik
+- Organisation des Tag der offenen Tür sowie Tag der Informatik
+- Materialorganisation
+- Kontakt mit Herr Goßmann (Lief nicht seitens Herr Goßmann)
+- Erstellung des Präsentationsmaterials (Powerpoint, Plakate)
+- Gegen ende des Projekts etwas Tweaking an Benutzeroberfläche(Mit Eduard)
+
+#Julia:
+-
+
+#Eduard:
