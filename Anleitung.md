@@ -23,12 +23,16 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    
 2. **Bibliotheken installieren**
 
-   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können sie mit dem folgenden Befehl die für das Projekt notwendigen Bibliotheken installieren.
+   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig mit einem der folgenden Befehl die für das Projekt notwendigen Bibliotheken
+   installieren.
    ```sh
-   pip install -r requirements.txt
+   python -m pip install -r requirements.txt (macOS)
+
+   py -m pip install -r requirements.txt  (Windows)
+
    ```
    
-3. **Neue Lieder hinzufügen (Optional)**:
+4. **Neue Lieder hinzufügen (Optional)**:
 
    Die bestehende Software kann um weitere Lieder erweitert werden, indem Sie in den Unterverzeichnissen von [Songs](./Songs) die entsprechenden Dateien hinzufügen.
    Zu den Dateien, die sie hinzufügen müssen gehören:
@@ -47,10 +51,13 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 
 
 
-5. **Interface starten**
+4. **Interface starten**
 
-   Alles bis hierhin erledigt? Gut, nun müssen Sie sich nur noch in einem Terminal zum Github Repository navigieren und folgenden Befehl ausführen.
+   Alles bis hierhin erledigt? Gut, nun müssen Sie sich nur noch in einem Terminal zum Github Repository navigieren und je nach Plattform einen der folgenden Befehle ausführen.
    ```sh
-   python interface_karaokenet.py
+   python interface_karaokenet.py (macOS)
+
+   py interface_karaokenet.py (Windows)
+
    ```
    Wie Sie sich auf der Website unserer Software zurechtfinden können erfahren Sie [hier](./README.md).
