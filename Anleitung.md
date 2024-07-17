@@ -25,6 +25,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 2. **Bibliotheken installieren**
 
    Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig die für das Projekt notwendigen Bibliotheken installieren.
+
    Für macOS:
    ```sh
    brew install portaudio
