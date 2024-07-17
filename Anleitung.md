@@ -9,6 +9,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 - Python 3.7 oder höher --> https://www.python.org/downloads/
 - pip (Python Package Installer) --> https://pypi.org/project/pip/
 - Git --> https://git-scm.com/downloads
+- Brew --> https://brew.sh/ (nur für macOS)
 
 
 1. **Repository klonen**:
@@ -23,12 +24,15 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    
 2. **Bibliotheken installieren**
 
-   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig mit einem der folgenden Befehl die für das Projekt notwendigen Bibliotheken
+   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig die für das Projekt notwendigen Bibliotheken
    installieren.
    ```sh
-   python -m pip install -r requirements.txt (macOS)
+   macOS:
+   brew install portaudio
+   python -m pip install -r requirements.txt
 
-   py -m pip install -r requirements.txt  (Windows)
+   Windows:
+   py -m pip install -r requirements.txt
 
    ```
    
