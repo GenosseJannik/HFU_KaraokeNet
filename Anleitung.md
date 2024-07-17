@@ -24,16 +24,16 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
    
 2. **Bibliotheken installieren**
 
-   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig die für das Projekt notwendigen Bibliotheken
-   installieren.
+   Wenn sie sich in einem Terminal zum Github Repository navigiert haben, können Sie plattformabhängig die für das Projekt notwendigen Bibliotheken installieren.
+   Für macOS:
    ```sh
-   macOS:
    brew install portaudio
    python -m pip install -r requirements.txt
+   ```
 
-   Windows:
+   Für Windows:
+    ```sh
    py -m pip install -r requirements.txt
-
    ```
    
 4. **Neue Lieder hinzufügen (Optional)**:
@@ -58,10 +58,13 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 4. **Interface starten**
 
    Alles bis hierhin erledigt? Gut, nun müssen Sie sich nur noch in einem Terminal zum Github Repository navigieren und je nach Plattform einen der folgenden Befehle ausführen.
+   Für macOS:
    ```sh
-   python interface_karaokenet.py (macOS)
-
-   py interface_karaokenet.py (Windows)
-
+   python interface_karaokenet.py
    ```
+   Für Windows:
+    ```sh
+   py interface_karaokenet.py
+   ```
+
    Wie Sie sich auf der Website unserer Software zurechtfinden können erfahren Sie [hier](./README.md).
