@@ -24,7 +24,9 @@ Für die [Erkennung ihrer Aussprache](https://github.com/GenosseJannik/HFU_Karao
 ## Anleitung
 ### Vorbereitung
 Stellen Sie sicher, dass Sie ein funktionsfähiges Mikrofon an Ihrem Computer angeschlossen haben. Das Mikrofon, das in den Systemeinstellungen als Standard-Ausgabegerät festgelegt ist, wird verwendet. Um dies zu überprüfen oder zu ändern, gehen Sie in die Einstellungen Ihres Betriebssystems und suchen Sie nach den Audio- oder Soundeinstellungen. Hier können Sie das gewünschte Mikrofon als Standardgerät auswählen. Testen Sie anschließend das Mikrofon, um sicherzustellen, dass es ordnungsgemäß funktioniert. 
+
 Zudem müssen Sie bei Apple in den Sicherheitseinstellungen dem Mikrofon erlauben, dass Programme, die im Terminal ausgeführt werden, auf das Mikrofon zugreifen dürfen. Gehen Sie dazu zu den Systemeinstellungen, wählen Sie "Sicherheit" und dann "Datenschutz". Unter dem Abschnitt "Mikrofon" können Sie den Zugriff für Programme aktivieren.
+
 Für Windows-Benutzer gilt ähnliches: Gehen Sie zu den Einstellungen, wählen Sie "Datenschutz" und dann "Mikrofon". Hier können Sie festlegen, welche Anwendungen auf das Mikrofon zugreifen dürfen. Stellen Sie sicher, dass der Zugriff für die gewünschten Programme aktiviert ist.
 
 
