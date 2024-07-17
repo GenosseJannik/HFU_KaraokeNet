@@ -59,6 +59,7 @@ Bevor Sie beginnen, stellen Sie sicher, dass die folgenden Softwarekomponenten a
 4. **Interface starten**
 
    Alles bis hierhin erledigt? Gut, nun müssen Sie sich nur noch in einem Terminal zum Github Repository navigieren und je nach Plattform einen der folgenden Befehle ausführen.
+   
    Für macOS:
    ```sh
    python interface_karaokenet.py
