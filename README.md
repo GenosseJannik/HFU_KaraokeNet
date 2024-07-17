@@ -27,7 +27,7 @@ Stellen Sie sicher, dass Sie ein funktionsfähiges Mikrofon an Ihrem Computer an
 
 Zudem müssen Sie bei Apple in den Sicherheitseinstellungen dem Mikrofon erlauben, dass Programme, die im Terminal ausgeführt werden, auf das Mikrofon zugreifen dürfen. Gehen Sie dazu zu den Systemeinstellungen, wählen Sie "Sicherheit" und dann "Datenschutz". Unter dem Abschnitt "Mikrofon" können Sie den Zugriff für Programme aktivieren.
 
-Für Windows-Benutzer gilt ähnliches: Gehen Sie zu den Einstellungen, wählen Sie "Datenschutz" und dann "Mikrofon". Hier können Sie festlegen, welche Anwendungen auf das Mikrofon zugreifen dürfen. Stellen Sie sicher, dass der Zugriff für die gewünschten Programme aktiviert ist.
+Für Windows-Benutzer gilt ähnliches: Gehen Sie zu den Einstellungen, wählen Sie "Datenschutz" und dann "Mikrofon". Hier können Sie festlegen, welche Anwendungen auf das Mikrofon zugreifen dürfen. Stellen Sie sicher, dass der Zugriff für das Terminal aktiviert ist.
 
 
 ### So funktioniert es
